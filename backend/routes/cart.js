@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Cart = require('../db/cart');
 const { Menu } = require('../db/index');
+const authMiddleware=require("../middlewares/auth")
 
 // Endpoint to add items to the cart
 router.post('/add', async (req, res) => {
@@ -48,4 +49,30 @@ router.post('/add', async (req, res) => {
   }
 });
 
+// Endpoint to retrieve user's cart
+router.get('/cart', async (req, res) => {
+    try {
+      const { userId } = req.query;
+  
+      // Validate input
+      if (!userId) {
+        return res.status(400).json({ message: 'Invalid input. Please provide a valid user ID.' });
+      }
+  
+      // Find user's cart
+      const cart = await Cart.findOne({ user: userId }).populate('items.itemId');
+  
+      if (!cart) {
+        return res.status(404).json({ message: 'Cart not found for the user.' });
+      }     
+  
+      res.status(200).json(cart);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+router.get("/auth",authMiddleware,(req,res)=>{
+  
+})
 module.exports = router;
