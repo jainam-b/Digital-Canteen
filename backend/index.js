@@ -7,6 +7,9 @@ const menuRouter = require("./routes/menu");
 const cartRouter = require("./routes/cart");
 // const filterRouter = require("./routes/filter");
 const   JWT_SECRET   = process.env.JWT_SECRET
+const cors = require('cors');
+ 
+app.use(cors());
 
 // Middleware for parsing request bodies
 app.use(bodyParser.json());
