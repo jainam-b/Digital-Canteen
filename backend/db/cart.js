@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-mongoose.connect(
-  "mongodb+srv://jainamb:jainamBagrecha@cluster0.h5mn9fs.mongodb.net/canteen-management-system"
-);
+mongoose.connect(process.env.DB_URL);
  
 
 const orderSchema = new mongoose.Schema({

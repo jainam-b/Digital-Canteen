@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Cart = require('../db/cart');
 const { Menu } = require('../db/index');
-const authMiddleware=require("../middlewares/auth")
+const userMiddleware=require("../middlewares/auth")
 
 // Endpoint to add items to the cart
 router.post('/add', async (req, res) => {
@@ -72,7 +72,7 @@ router.get('/cart', async (req, res) => {
     }
   });
   
-router.get("/auth",authMiddleware,(req,res)=>{
+router.get("/auth",userMiddleware,(req,res)=>{
   
 })
 module.exports = router;
