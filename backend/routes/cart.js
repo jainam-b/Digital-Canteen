@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Cart = require('../db/cart');
 const { Menu } = require('../db/index');
+const { User } = require('../db/user');
 const userMiddleware=require("../middlewares/auth")
 
 // Endpoint to add items to the cart
@@ -72,7 +73,28 @@ router.get('/cart', async (req, res) => {
     }
   });
   
-router.get("/auth",userMiddleware,(req,res)=>{
+  router.get("/auth", userMiddleware, async (req, res) => {
+    try {
+      const username = req.username;
+     
+      
+       
+      const user = await User.findOne({ username });
+      
+      if (!user) {
+        console.log("User not found");
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+       
+      console.log("User ID:", user._id);
+      
+      
+      res.status(200).json({ userId: user._id });
+    } catch (error) {
+      console.error("Error in /auth route:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
   
-})
 module.exports = router;
