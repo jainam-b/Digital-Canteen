@@ -4,47 +4,47 @@ mongoose.connect(
   "mongodb+srv://jainamb:jainamBagrecha@cluster0.h5mn9fs.mongodb.net/canteen-management-system"
 );
 
-const itemSchema = new mongoose.Schema({
-  orderId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    unique: true,
-  },
-  customerId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "User", // Reference to the User collection/table
-  },
-  items: [
-    {
-      itemId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "MenuItem", // Reference to the MenuItem collection/table
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-    },
-  ],
-  totalPrice: {
-    type: Number,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  status: {
-    type: String,
-    enum: ["pending", "processing", "shipped", "delivered"],
-    default: "pending",
-  },
-});
+// const itemSchema = new mongoose.Schema({
+//   orderId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     required: true,
+//     unique: true,
+//   },
+//   customerId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     required: true,
+//     ref: "User", // Reference to the User collection/table
+//   },
+//   items: [
+//     {
+//       itemId: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "MenuItem", // Reference to the MenuItem collection/table
+//       },
+//       quantity: {
+//         type: Number,
+//         required: true,
+//       },
+//       price: {
+//         type: Number,
+//         required: true,
+//       },
+//     },
+//   ],
+//   totalPrice: {
+//     type: Number,
+//     required: true,
+//   },
+//   createdAt: {
+//     type: Date,
+//     default: Date.now,
+//   },
+//   status: {
+//     type: String,
+//     enum: ["pending", "processing", "shipped", "delivered"],
+//     default: "pending",
+//   },
+// });
 
 // menu items
 const menuItemSchema = new mongoose.Schema({
@@ -63,6 +63,6 @@ const menuItemSchema = new mongoose.Schema({
 
 const Menu = mongoose.model("MenuItem", menuItemSchema);
 
-const MenuOrder = mongoose.model("MenuOrder", itemSchema);
+ 
 
-module.exports = { MenuOrder, Menu };
+module.exports = {  Menu };
