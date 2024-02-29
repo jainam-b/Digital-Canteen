@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const Cart = require("../db/cart");
+const { Cart } = require("../db/cart"); 
 const { Menu } = require("../db/index");
 const { User } = require("../db/user");
 const userMiddleware = require("../middlewares/auth");
-
 
 // Endpoint to add items to the cart
 router.post("/add", async (req, res) => {
@@ -13,11 +12,9 @@ router.post("/add", async (req, res) => {
 
     // Validate input
     if (!userId || !Array.isArray(items) || items.length === 0) {
-      return res
-        .status(400)
-        .json({
-          message: "Invalid input. Please provide valid user ID and items.",
-        });
+      return res.status(400).json({
+        message: "Invalid input. Please provide valid user ID and items.",
+      });
     }
 
     const errorMessages = [];
@@ -61,30 +58,34 @@ router.post("/add", async (req, res) => {
 });
 
 // Endpoint to retrieve user's cart
-router.get('/cart', async (req, res) => {
+router.get("/cart", async (req, res) => {
   try {
     const { userId } = req.body;
 
     // Validate input
     if (!userId) {
-      return res.status(400).json({ message: 'Invalid input. Please provide a valid user ID.' });
+      return res
+        .status(400)
+        .json({ message: "Invalid input. Please provide a valid user ID." });
     }
 
     // Find user's cart
     const cart = await Cart.findOne({ user: userId });
 
     if (!cart) {
-      return res.status(404).json({ message: 'Cart not found for the user.' });
+      return res.status(404).json({ message: "Cart not found for the user." });
     }
 
     // Fetch details of each item in the cart
-    const populatedItems = await Promise.all(cart.items.map(async (item) => {
-      const menuItem = await Menu.findById(item.itemId);
-      if (!menuItem) {
-        throw new Error(`Item with ID ${item.itemId} not found.`);
-      }
-      return { ...item.toObject(), name: menuItem.name }; // Add item name to item details
-    }));
+    const populatedItems = await Promise.all(
+      cart.items.map(async (item) => {
+        const menuItem = await Menu.findById(item.itemId);
+        if (!menuItem) {
+          throw new Error(`Item with ID ${item.itemId} not found.`);
+        }
+        return { ...item.toObject(), name: menuItem.name }; // Add item name to item details
+      })
+    );
 
     // Replace items in the cart with populated items
     cart.items = populatedItems;
@@ -95,29 +96,36 @@ router.get('/cart', async (req, res) => {
   }
 });
 
-router.put('/:cartItemId', async (req, res) => {
+router.put("/:cartItemId", async (req, res) => {
   try {
     const { userId } = req.query;
-    const { cartItemId } = req.params;
+    const { cartItemId } = req.params; //the food item id which i want to change 
     const { quantity } = req.body;
 
     // Validate input
     if (!userId || !cartItemId || !quantity || quantity <= 0) {
-      return res.status(400).json({ message: 'Invalid input. Please provide valid user ID, cart item ID, and quantity.' });
+      return res
+        .status(400)
+        .json({
+          message:
+            "Invalid input. Please provide valid user ID, cart item ID, and quantity.",
+        });
     }
 
     // Find user's cart
     const cart = await Cart.findOne({ user: userId });
 
     if (!cart) {
-      return res.status(404).json({ message: 'Cart not found for the user.' });
+      return res.status(404).json({ message: "Cart not found for the user." });
     }
-
+    
     // Find the cart item to update
-    const cartItem = cart.items.find(item => item._id.toString() === cartItemId);
-
+    const cartItem = cart.items.find(
+      (item) => item.itemId.toString() === cartItemId
+    );
+      
     if (!cartItem) {
-      return res.status(404).json({ message: 'Cart item not found.' });
+      return res.status(404).json({ message: "Cart item not found." });
     }
 
     // Update the quantity of the cart item
@@ -132,7 +140,6 @@ router.put('/:cartItemId', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 router.get("/auth", userMiddleware, async (req, res) => {
   try {

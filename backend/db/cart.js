@@ -15,5 +15,7 @@ const orderSchema = new mongoose.Schema({
 });
 
 
-
-module.exports = mongoose.model('cart', orderSchema);
+const Cart=mongoose.model('Cart', orderSchema);
+module.exports = {
+  Cart
+}
