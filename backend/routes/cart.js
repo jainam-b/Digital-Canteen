@@ -61,29 +61,78 @@ router.post("/add", async (req, res) => {
 });
 
 // Endpoint to retrieve user's cart
-router.get("/cart", async (req, res) => {
+router.get('/cart', async (req, res) => {
   try {
-    const { userId } = req.query;
+    const { userId } = req.body;
 
     // Validate input
     if (!userId) {
-      return res
-        .status(400)
-        .json({ message: "Invalid input. Please provide a valid user ID." });
+      return res.status(400).json({ message: 'Invalid input. Please provide a valid user ID.' });
     }
 
     // Find user's cart
-    const cart = await Cart.findOne({ user: userId }).populate("items.itemId");
+    const cart = await Cart.findOne({ user: userId });
 
     if (!cart) {
-      return res.status(404).json({ message: "Cart not found for the user." });
+      return res.status(404).json({ message: 'Cart not found for the user.' });
     }
+
+    // Fetch details of each item in the cart
+    const populatedItems = await Promise.all(cart.items.map(async (item) => {
+      const menuItem = await Menu.findById(item.itemId);
+      if (!menuItem) {
+        throw new Error(`Item with ID ${item.itemId} not found.`);
+      }
+      return { ...item.toObject(), name: menuItem.name }; // Add item name to item details
+    }));
+
+    // Replace items in the cart with populated items
+    cart.items = populatedItems;
 
     res.status(200).json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+
+router.put('/:cartItemId', async (req, res) => {
+  try {
+    const { userId } = req.query;
+    const { cartItemId } = req.params;
+    const { quantity } = req.body;
+
+    // Validate input
+    if (!userId || !cartItemId || !quantity || quantity <= 0) {
+      return res.status(400).json({ message: 'Invalid input. Please provide valid user ID, cart item ID, and quantity.' });
+    }
+
+    // Find user's cart
+    const cart = await Cart.findOne({ user: userId });
+
+    if (!cart) {
+      return res.status(404).json({ message: 'Cart not found for the user.' });
+    }
+
+    // Find the cart item to update
+    const cartItem = cart.items.find(item => item._id.toString() === cartItemId);
+
+    if (!cartItem) {
+      return res.status(404).json({ message: 'Cart item not found.' });
+    }
+
+    // Update the quantity of the cart item
+    cartItem.quantity = quantity;
+    cartItem.totalPrice = cartItem.price * quantity;
+
+    // Save the updated cart
+    await cart.save();
+
+    res.status(200).json(cart);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 
 router.get("/auth", userMiddleware, async (req, res) => {
   try {
