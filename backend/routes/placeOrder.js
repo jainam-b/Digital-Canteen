@@ -44,4 +44,22 @@ router.post('/place-order', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+router.get("/info/:userId", async (req, res) => {
+    try {
+        const userId = req.params.userId; // Extracting userId from route parameters
+        const user = await User.findOne({ _id: userId }, { username: 1 , email:1}); // Finding user by userId
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Return user information
+        res.json({ user });
+    } catch (error) {
+        console.error("Error fetching user information:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 module.exports=router;
