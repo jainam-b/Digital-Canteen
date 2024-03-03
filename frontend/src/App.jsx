@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import CartItems from './components/Cart'
 import Profile from './components/Profile'
+import Payment from './components/Payments'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,7 @@ function App() {
     <>
       {/* <CartItems/>  */}
       <Profile/> 
+      <Payment/> 
     </>
   )
 }
