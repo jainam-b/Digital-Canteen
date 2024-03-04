@@ -14,7 +14,8 @@ function App() {
          
          <Routes>
            <Route path="/payment" element={<Payment />}></Route>
-           {/* <Route path="/order-details" element={<OrderDetails />}></Route> */}
+           {/* <Route path="/cart" element={<CartItems />}></Route>
+           <Route path="/chart" element={<Charts />}></Route> */}
             
          </Routes>
        </BrowserRouter>

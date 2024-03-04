@@ -14,7 +14,7 @@ const   JWT_SECRET   = process.env.JWT_SECRET
 const cors = require('cors');
  
 app.use(cors());
-
+app.use(express.json({ extended: false }));
 // Middleware for parsing request bodies
 app.use(bodyParser.json());
 app.use("/order", orderRouter)
