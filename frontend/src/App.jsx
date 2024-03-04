@@ -1,19 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import CartItems from './components/Cart'
 import Profile from './components/Profile'
 import Payment from './components/Payments'
+import { BrowserRouter , Routes, Router, Route } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <CartItems/>  */}
-      <Profile/> 
-      <Payment/> 
+     <BrowserRouter>
+         
+         <Routes>
+           <Route path="/payment" element={<Payment />}></Route>
+           {/* <Route path="/order-details" element={<OrderDetails />}></Route> */}
+            
+         </Routes>
+       </BrowserRouter>
     </>
   )
 }
