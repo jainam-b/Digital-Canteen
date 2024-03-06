@@ -3,16 +3,11 @@ const router = express.Router();
 const Razorpay = require('razorpay');
 const {config} =require("dotenv")
 config({path:"./config/config.env"})
-// Route to create a new order
+ 
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 // router.use(cors());
-
-// // Initialize Razorpay client
-// const razorpay = new Razorpay({
-//     key_id: process.env.RAZORPAY_KEY_ID,
-//     key_secret: process.env.RAZORPAY_KEY_SECRET,
-//   });
+ 
  
 
 
@@ -75,5 +70,40 @@ router.post("/success", async (req, res) => {
       res.status(500).send(error);
   }
 });
+
+// Backend endpoint for handling successful payment confirmation
+// router.post("/order-conform", async (req, res) => {
+//   try {
+//     // Process the payment and update the order status in the database
+
+//     // Send confirmation message to the user
+//     const { orderId, amount, userEmail } = req.body;
+
+//     // Construct the confirmation message
+//     const confirmationMessage = `Your payment of ${amount} for order ${orderId} has been successfully confirmed. Thank you for your purchase!`;
+
+//     // Send the confirmation message via email, SMS, or other messaging service
+//     // Example: Sending confirmation email
+//     const nodemailer = require("nodemailer");
+//     const transporter = nodemailer.createTransport({
+//       // Configure transporter (e.g., SMTP, API key for email service)
+//     });
+    
+//     const mailOptions = {
+//       from: "jainambagrecha10@gmail.com",
+//       to: userEmail,
+//       subject: "Payment Confirmation",
+//       text: confirmationMessage,
+//     };
+
+//     await transporter.sendMail(mailOptions);
+    
+//     res.status(200).json({ message: "Payment confirmation message sent successfully" });
+//   } catch (error) {
+//     console.error("Error sending payment confirmation message:", error);
+//     res.status(500).json({ message: "Error sending payment confirmation message" });
+//   }
+// });
+
 
 module.exports=router;
