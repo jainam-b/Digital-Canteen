@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import CartItems from './components/Cart'
 import Profile from './components/Profile'
 import Payment from './components/Payments'
@@ -9,7 +8,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div>
+      <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
      <BrowserRouter>
          
          <Routes>
@@ -19,7 +21,7 @@ function App() {
             
          </Routes>
        </BrowserRouter>
-    </>
+    </div>
   )
 }
 
