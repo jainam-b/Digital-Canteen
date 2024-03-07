@@ -2,7 +2,7 @@ const express = require("express");
 const { Router } = require("express");
 const router = Router();
 const { MenuOrder } = require("../db");
-// const userMiddleware = require("../middlewares/user");
+const io = require('socket.io')(server);
 
 router.get("/menu", async (req, res) => {
     try {
@@ -25,5 +25,18 @@ router.get("/menu", async (req, res) => {
       res.status(500).json({ message: 'Error retrieving menu orders' });
     }
 });
+
+
+
+// Listen for new order placement
+app.post('/orders', (req, res) => {
+    // Handle order placement logic
+
+    // Emit the new order to all connected clients (including the dashboard)
+    io.emit('newOrder', newOrderDetails);
+    
+    res.send('Order placed successfully');
+});
+
 
 module.exports = router;
