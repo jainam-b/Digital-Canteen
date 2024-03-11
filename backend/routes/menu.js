@@ -32,6 +32,28 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.put('/update/:itemId', async (req, res) => {
+  const { itemId } = req.params; // Extract the item ID from the request parameters
+  const { name, description, price, category } = req.body; // Extract the updated item details from the request body
+
+  try {
+    // Find the menu item by ID and update its details
+    const updatedItem = await Menu.findByIdAndUpdate(itemId, { name, description, price, category }, { new: true });
+
+    if (!updatedItem) {
+      return res.status(404).json({ message: 'Menu item not found' });
+    }
+
+    // Fetch the updated item from the database to ensure the latest data is returned
+    const refreshedItem = await Menu.findById(itemId);
+
+    res.json(refreshedItem); // Send the updated menu item as the response
+  } catch (error) {
+    console.error('Error updating menu item:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 module.exports = router;
 
  

@@ -2,8 +2,7 @@ const express = require("express");
 const { Router } = require("express");
 const router = Router();
 const { MenuOrder } = require("../db");
-// const userMiddleware = require("../middlewares/user");
-
+ 
 router.get("/menu", async (req, res) => {
     try {
         // Retrieve all menu orders from the database
@@ -25,5 +24,9 @@ router.get("/menu", async (req, res) => {
       res.status(500).json({ message: 'Error retrieving menu orders' });
     }
 });
+
+
+
+
 
 module.exports = router;

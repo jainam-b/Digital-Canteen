@@ -26,7 +26,7 @@ function Payment() {
             return;
         }
 
-        const result = await axios.post("http://localhost:5000/payment/orders");
+        const result = await axios.post("http://localhost:3001/pay/orders");
 
         if (!result) {
             alert("Server error. Are you online?");
@@ -36,12 +36,12 @@ function Payment() {
         const { amount, id: order_id, currency } = result.data;
 
         const options = {
-            key: "rzp_test_r6FiJfddJh76SI", // Enter the Key ID generated from the Dashboard
+            key: "rzp_test_YMSg1NivuORLa3", // Enter the Key ID generated from the Dashboard
             amount: amount.toString(),
             currency: currency,
             name: "Soumya Corp.",
             description: "Test Transaction",
-            image: { logo },
+             
             order_id: order_id,
             handler: async function (response) {
                 const data = {
@@ -75,7 +75,7 @@ function Payment() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
+                <img  className="App-logo" alt="logo" />
                 <p>Buy React now!</p>
                 <button className="App-link" onClick={displayRazorpay}>
                     Pay ₹500
