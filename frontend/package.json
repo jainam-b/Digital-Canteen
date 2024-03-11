@@ -16,6 +16,7 @@
     "@mui/icons-material": "^5.15.12",
     "@mui/joy": "^5.0.0-beta.30",
     "axios": "^1.6.7",
+    "material-ui-kit": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2"
