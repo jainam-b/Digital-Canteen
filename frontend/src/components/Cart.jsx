@@ -8,13 +8,14 @@ const CartItems = () => {
     const fetchCartItems = async () => {
       try {
         // Assuming your backend API endpoint for fetching cart items is '/cart'
-        const response = await axios.get('http://localhost:3001/cart/cart', {
-          params: {
-            userId: '65d80bea45cb8407e8765bd3' // Replace 'user_id_here' with the actual user ID
-          }
-        });
-        setCartItems(response.data.items); 
-        console.log(response.data.items);// Assuming cart items are in 'items' array in the response
+        const response = await axios.get('http://localhost:3000/order/menus')
+        // console.log(response);
+        if (response.data) { // Check if items array is defined
+          setCartItems(response.data); 
+         
+        }
+         
+           
       } catch (error) {
         console.error('Error fetching cart items:', error);
       }
@@ -27,9 +28,10 @@ const CartItems = () => {
     <div>
       <h2>Cart Items</h2>
       <ul>
-        {cartItems.map((item, index) => (
+        {cartItems && cartItems.map((item, index) => ( // Add a check for cartItems
           <li key={index}>
             <div>{item._id}</div>
+            <div>{item.name}</div>
             <div>{item.price}</div>
             <div>{item.quantity}</div>
           </li>
