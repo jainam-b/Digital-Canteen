@@ -19,6 +19,7 @@ const ProductCard = ({ product, addToCart }) => {
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,12 +35,21 @@ const Products = () => {
   }, []);
 
   const addToCart = async (productId) => {
+    setLoading(true);
+
     try {
-      // Send a POST request to the addToCart endpoint with the product ID
-      const response = await axios.post('http://localhost:3000/cart/add', { productId });
-      console.log('Product added to cart:', response.data);
+      const response = await axios.post('http://localhost:3000/cart/add', {
+        userId: '65d80bea45cb8407e8765bd3', // Replace with the actual user ID
+        items: [{ itemId: productId, quantity: 1 }] // Assuming quantity is always 1 for now
+      });
+
+      console.log('Added to cart:', response.data);
+      // You can handle success, such as displaying a success message or updating the UI
     } catch (error) {
-      console.error('Error adding product to cart:', error);
+      console.error('Error adding to cart:', error);
+      // You can handle errors, such as displaying an error message to the user
+    } finally {
+      setLoading(false);
     }
   };
 

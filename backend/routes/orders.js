@@ -4,6 +4,7 @@ const { Cart } = require("../db/cart");
 const { Menu } = require("../db/index");
 const { User } = require("../db/user");
 const userMiddleware = require("../middlewares/auth");
+const {Order} = require("../db/order");
 
 // Endpoint to add items to the order database
 router.post("/add", async (req, res) => {
@@ -41,7 +42,7 @@ router.post("/add", async (req, res) => {
     }
 
     // Create the order
-    const order = new Cart({
+    const order = new Order({
       user: userId,
       items: itemsToAdd,
       totalPrice: itemsToAdd.reduce(
