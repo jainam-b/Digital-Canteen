@@ -1,0 +1,37 @@
+.Foodcard{
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 20px !important;
+}
+.FoodIcon{
+    background-color: #F5DDC4;
+    width: 16%;
+    height: 43px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#f48e28;
+    
+}
+.css-46bh2p-MuiCardContent-root:last-child {
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+   
+}
+.foodContent
+{
+    height: 35vh !important;
+    margin-left: 21px; 
+
+
+}
+.Foodcards{
+    display: flex;
+    justify-content: space-around;
+    width: 65%;
+}

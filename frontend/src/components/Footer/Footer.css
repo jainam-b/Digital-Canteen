@@ -1,0 +1,20 @@
+.Footer{
+    margin-top: 10%;
+    background-color: rgb(246, 246, 246);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30vh;
+}
+
+.footerSection1,.footerSection2,.footerSection3,.footerSection4{
+    width: 23%;
+}
+.subscribeButton{
+    background-color: #f48e28 !important;
+    border-radius: 25px;
+ }
+
+ .subscribeButton{
+    border-radius: 10px;
+}

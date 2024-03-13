@@ -1,0 +1,35 @@
+.prodCard{
+    width: 275px;
+    padding: 0px ;
+    border-radius: 20px !important;
+}
+.prodimage{
+    width: 100%;
+}
+.css-46bh2p-MuiCardContent-root {
+    padding: 0px !important;
+
+}
+.prodIntro,.CartItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.prodIntro>span>svg{
+    color: #f48e28;
+}
+.Cart{
+    background-color: #f48e28 !important;
+    border-radius: 20px !important;
+}
+.CartItem{
+padding: 6px !important;
+}
+.css-dnrpxu-MuiCardActions-root{
+    padding: 0px;
+}
+.outerCard{
+    width: 33%;
+    padding: 10px 0px;
+}
