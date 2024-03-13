@@ -3,7 +3,7 @@ import CartItems from './components/Cart'
 import ItemCard from './components/ItemCard'
 import Payment from './components/Payments'
 import { BrowserRouter , Routes, Router, Route } from "react-router-dom";
-import Products from './components/Productcard';
+import Products from './components/Products';
 
 function App() {
   const [count, setCount] = useState(0)
