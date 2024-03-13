@@ -48,6 +48,7 @@ mongoose.connect(
 
 // menu items
 const menuItemSchema = new mongoose.Schema({
+  
   name: { type: String, required: true },
   description: String,
   price: { type: Number, required: true },

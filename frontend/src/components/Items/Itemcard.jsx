@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import StarIcon from '@mui/icons-material/Star';
 import "./Itemcard.css"
+import products from "./Items"
 const bull = (
     <Box
         component="span"
@@ -16,7 +17,9 @@ const bull = (
     </Box>
 );
 
-export default function Itemcard({image, productName, rating, price }) {
+export default function Itemcard({image, productName, rating, price,products }) {
+    
+
     return (
         <div className='outerCard'>
         <Card sx={{ minWidth: 275 }} className='prodCard'>
@@ -30,7 +33,9 @@ export default function Itemcard({image, productName, rating, price }) {
             </CardContent>
             <div className='CartItem'>
             <CardActions>
-                <Button variant="contained" className='Cart' >Add to Cart</Button>
+                <Button variant="contained" onClick={()=>{
+                    console.log();
+                }} className='Cart' >Add to Cart</Button>
             </CardActions>
             <CardContent>
                 {price}
