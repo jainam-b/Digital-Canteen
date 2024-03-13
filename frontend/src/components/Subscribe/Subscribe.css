@@ -1,0 +1,49 @@
+.SubscribeBBox{
+    background-color: black;
+    height: 40vh;
+    width: 68%;
+    border-radius: 36px;
+    display: flex;
+}
+.Subscribe{
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 13%;
+
+}
+.subscribeButton{
+   background-color: #f48e28 !important;
+}
+
+.Subscribeimage{
+    position:absolute;
+    width: 30%;
+    margin-top: -78px;
+
+}
+
+.subContent{
+    display: flex;
+    position: absolute;
+    right: 17%;
+    flex-direction: column;
+    width: 30%;
+    justify-content: space-around;
+    color: white;
+    height: 100px;
+    align-items: center;
+    margin-top: 85px;
+
+}
+
+.SubscribeInput
+{
+    display: flex;
+}
+.SubscribeInput>input{
+    border-radius: 5px;
+}
+.SubscribeInput>button{
+    border-radius: 10px;
+}

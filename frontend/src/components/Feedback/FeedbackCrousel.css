@@ -1,0 +1,33 @@
+.CrouselP1{
+    height: 37vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #f6f6f6;
+    border-radius: 10px;
+    background-color: white !important;
+}
+.CrouselP2{
+    height: 37vh;
+    background-color: wheat !important;
+}
+
+.CrouselP3{
+    height: 37vh;
+    background-color: wheat !important;
+}
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel-control-prev-icon ,.carousel-control-next-icon{
+    background-color: #f48e28 !important;
+    border-radius: 20px !important;
+}
+.carousel-control-next-icon{
+margin-left: 64%;
+}
+.carousel-control-prev-icon{
+    margin-right: 64%;
+}
