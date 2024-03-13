@@ -1,0 +1,12 @@
+.FScard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 2px gray;
+    width: 262px;
+    margin: 10px;
+}
+.FSImage{
+    width: 190px !important;
+}

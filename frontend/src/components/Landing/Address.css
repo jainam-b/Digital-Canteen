@@ -1,0 +1,31 @@
+.Address{
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 5%;
+
+}
+.hrline{
+    height: 12vh !important;
+    width: 0.1px !important;
+    border-left: 0.5px solid black !important;
+}
+
+.AddressBox{
+    box-shadow: 2px 2px 2px 2px #d1d1d1;
+    display: flex;
+    width: 57%;
+    height: 16vh;
+    border-radius: 20px;
+   justify-content: space-evenly;
+}
+.AddSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.AddSecIcon{
+    color: #f48e28 !important; 
+}
