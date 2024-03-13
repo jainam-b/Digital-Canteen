@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const { Server } = require("socket.io");
 const cors = require('cors');
+const authenticateToken = require('./middlewares/authenticateToken');
+
 
 // Import routers
-const orderRouter = require("./routes/order");
+const orderRouter = require("./routes/cart");
 const userRouter = require("./routes/userSignup");
 const menuRouter = require("./routes/menu");
-const cartRouter = require("./routes/cart");
+const cartRouter = require("./routes/orders");
 const paymentRouter = require("./routes/payment");
 const placeOrderRouter = require("./routes/placeOrder");
 
@@ -46,6 +48,13 @@ io.on('connection', (socket) => {
   });
 });
 
+
+
+app.get('/protected-route', authenticateToken, (req, res) => {
+  // Access the authenticated user using req.auth
+  console.log(req.auth);
+  res.send('You have access to this protected route!');
+});
 // Start the server
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {

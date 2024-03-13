@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 const { Router } = require("express");
 const router = Router();
 const { User } = require("../db/user");
+const {config} =require("dotenv")
+config({path:"./config/config.env"})
 const JWT_SECRET = process.env.JWT_SECRET;
 const userMiddleware = require("../middlewares/user");
 const { createUser, loginUser } = require("../zod/type");
@@ -53,6 +55,11 @@ router.post("/login", async (req, res) => {
 
     if (isPasswordValid) {
       const token = jwt.sign({ username }, JWT_SECRET);
+      
+      // Set the token in the response header
+      res.setHeader('Authorization', `Bearer ${token}`);
+      console.log(token);
+      // Include token in response body if needed
       res.json({ token });
     } else {
       res.status(401).json({ msg: "Invalid username or password" });
