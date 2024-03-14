@@ -8,6 +8,7 @@ import Landing from "./components/Landing/Landing";
 import FeedbackCrousel from "./components/FeedbackCrousel";
 import FirstScreen from "./components/Landing/FirstScreen";
 import Products from "./components/Productcard";
+import MenuItem  from "./components/MenuItems";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,7 @@ function App() {
 
           <Route path="/cart" element={<CartItems />}></Route>
           <Route path="/product" element={<Products />}></Route>
+          <Route path="/menu-items" element={<MenuItem />}></Route>
           {/* <Route path="/chart" element={<Charts />}></Route> */}
         </Routes>
       </BrowserRouter>

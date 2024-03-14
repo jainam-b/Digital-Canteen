@@ -17,9 +17,9 @@ const bull = (
     </Box>
 );
 
-export default function Itemcard({image, productName, rating, price,products }) {
+export default function Itemcard({image, productName, rating, price,productId }) {
     
-
+   
     return (
         <div className='outerCard'>
         <Card sx={{ minWidth: 275 }} className='prodCard'>
@@ -34,8 +34,8 @@ export default function Itemcard({image, productName, rating, price,products }) 
             <div className='CartItem'>
             <CardActions>
                 <Button variant="contained" onClick={()=>{
-                    console.log();
-                }} className='Cart' >Add to Cart</Button>
+                    console.log(productId);
+                }} className='Cart ' >Add to Cart</Button>
             </CardActions>
             <CardContent>
                 {price}

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Items.css';
-import Itemcard from './Itemcard';
+// import './Items.css';
+import "../components/Items/Items.css"
+import Itemcard from '../components/Items/Itemcard';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 
-function Items() {
+function MenuItems() {
   const [products, setProducts] = useState([]);
 
   let navigate = useNavigate(); 
@@ -51,16 +52,16 @@ function Items() {
             <p>No products found</p>
           )}
         </div>
-        <div className='moreProduct text-white'>
+        {/* <div className='moreProduct text-white'>
         <Button variant=" " onClick={routeChange} className='Cart' > More Products
           </Button>
           <div>
             <ArrowForwardIosIcon className='ArrowForwardIosIcon' />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </div>
   );
 }
 
-export default Items;
+export default MenuItems;
