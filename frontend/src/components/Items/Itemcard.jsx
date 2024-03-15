@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StarIcon from "@mui/icons-material/Star";
 import "./Itemcard.css";
+import { useCart } from "../Context/CartContext"; // Import useCart from CartContext
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import { useCart } from "../Context/CartContext";
 
 export default function Itemcard({
   image,
@@ -17,12 +17,16 @@ export default function Itemcard({
   price,
   productId,
 }) {
-  const { addToCart } = useCart();
   const navigate = useNavigate(); // Get navigate function
+  const { addToCart } = useCart(); // Get addToCart function from CartContext
 
   const handleAddToCart = () => {
+    // Call addToCart function to add the item to the cart
     addToCart({ productId, productName, price });
-    navigate("/cart"); // Navigate to the cart page after adding to cart
+  };
+
+  const handleGoToCart = () => {
+    navigate("/cart"); // Navigate to the cart page
   };
 
   return (
@@ -45,6 +49,9 @@ export default function Itemcard({
               className="Cart"
             >
               Add to Cart
+            </Button>
+            <Button variant="contained" onClick={handleGoToCart} className="Cart">
+              Go to Cart
             </Button>
           </CardActions>
           <CardContent>{price}</CardContent>
