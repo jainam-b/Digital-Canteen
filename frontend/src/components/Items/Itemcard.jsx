@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import StarIcon from "@mui/icons-material/Star";
 import "./Itemcard.css";
-// import products from "./Items"
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { useCart } from "../Context/CartContext";
 
 export default function Itemcard({
@@ -18,12 +18,18 @@ export default function Itemcard({
   productId,
 }) {
   const { addToCart } = useCart();
+  const navigate = useNavigate(); // Get navigate function
+
+  const handleAddToCart = () => {
+    addToCart({ productId, productName, price });
+    navigate("/cart"); // Navigate to the cart page after adding to cart
+  };
 
   return (
     <div className="outerCard">
       <Card sx={{ minWidth: 275 }} className="prodCard">
         <CardContent>
-          <img src={image} className="prodimage"></img>
+          <img src={image} className="prodimage" alt={productName}></img>
           <div className="prodIntro">
             <h5>{productName}</h5>
             <span>
@@ -35,7 +41,7 @@ export default function Itemcard({
           <CardActions>
             <Button
               variant="contained"
-              onClick={() => addToCart({ productId, productName, price })}
+              onClick={handleAddToCart}
               className="Cart"
             >
               Add to Cart
