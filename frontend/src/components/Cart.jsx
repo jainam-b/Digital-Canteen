@@ -1,44 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { useCart } from './Context/CartContext';
 
-const CartItems = () => {
-  const [cartItems, setCartItems] = useState([]);
+const CartPage = () => {
+  const { cartItems, removeFromCart, clearCart } = useCart();
 
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        // Assuming your backend API endpoint for fetching cart items is '/cart'
-        const response = await axios.get('http://localhost:3000/order/menus')
-        // console.log(response);
-        if (response.data) { // Check if items array is defined
-          setCartItems(response.data); 
-         
-        }
-         
-           
-      } catch (error) {
-        console.error('Error fetching cart items:', error);
-      }
-    };
-
-    fetchCartItems();
-  }, []);
-
+  console.log('Cart Items:', cartItems); // Add this line to log cart items
+  
   return (
     <div>
       <h2>Cart Items</h2>
       <ul>
-        {cartItems && cartItems.map((item, index) => ( // Add a check for cartItems
+        {cartItems.map((item, index) => (
           <li key={index}>
-            <div>{item._id}</div>
-            <div>{item.name}</div>
-            <div>{item.price}</div>
-            <div>{item.quantity}</div>
+            <span>{item.name}</span>
+            <button onClick={() => removeFromCart(item.id)}>Remove</button>
           </li>
         ))}
       </ul>
+      <button onClick={clearCart}>Clear Cart</button>
     </div>
   );
 };
 
-export default CartItems;
+export default CartPage;

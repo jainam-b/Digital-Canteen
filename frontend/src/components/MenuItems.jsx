@@ -52,13 +52,7 @@ function MenuItems() {
             <p>No products found</p>
           )}
         </div>
-        {/* <div className='moreProduct text-white'>
-        <Button variant=" " onClick={routeChange} className='Cart' > More Products
-          </Button>
-          <div>
-            <ArrowForwardIosIcon className='ArrowForwardIosIcon' />
-          </div> */}
-        {/* </div> */}
+      
       </div>
     </div>
   );
