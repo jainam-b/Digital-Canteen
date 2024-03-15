@@ -8,12 +8,13 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    // Load cart items from localStorage on component mount
+    // Load cart items from localStorage only on component mount
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
-  }, []);
+  }, []); // Empty dependency array ensures the effect runs only once on mount
+  
 
   const saveCartItemsToStorage = (items) => {
     // Save cart items to localStorage
@@ -24,18 +25,22 @@ export const CartProvider = ({ children }) => {
     const updatedCartItems = [...cartItems, product];
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems);
+    console.log(product);
   };
 
   const removeFromCart = (productId) => {
-    const updatedCartItems = cartItems.filter(item => item.productId !== productId);
+    const updatedCartItems = cartItems.filter(item => item.id !== productId);
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems);
   };
+  
 
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem('cartItems'); // Remove cart items from localStorage
+    console.log(cartItems);
   };
+  
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>

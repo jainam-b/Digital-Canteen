@@ -50,9 +50,9 @@ export default function Itemcard({
             >
               Add to Cart
             </Button>
-            <Button variant="contained" onClick={handleGoToCart} className="Cart">
+            {/* <Button variant="contained" onClick={handleGoToCart} className="Cart">
               Go to Cart
-            </Button>
+            </Button> */}
           </CardActions>
           <CardContent>{price}</CardContent>
         </div>
