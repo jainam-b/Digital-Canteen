@@ -5,8 +5,9 @@ import Itemcard from './Itemcard';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress'; // Import CircularProgress for the loader
-import { useNavigate } from "react-router-dom";
-import Alert from '@mui/material/Alert';  
+import { useNavigate } from "react-router-dom"; 
+import SwipeableEdgeDrawer from './Explore'; // Adjust the path as per your file structure
+
 
 function Items() {
   const [products, setProducts] = useState([]);
@@ -74,6 +75,7 @@ function Items() {
           </div>
         )}
       </div>
+      <SwipeableEdgeDrawer   />
     </div>
   );
 }
