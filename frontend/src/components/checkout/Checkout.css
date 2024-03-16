@@ -1,0 +1,28 @@
+/* OrderPaymentPage.css */
+.order-payment-container {
+    padding: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .order-payment-container {
+      padding: 10px;
+    }
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  form > * {
+    margin-bottom: 15px;
+  }
+  
+  .payment-method-select {
+    width: 100%;
+  }
+.confirmOrder{
+    background-color: #f48e28 !important; 
+}  
+

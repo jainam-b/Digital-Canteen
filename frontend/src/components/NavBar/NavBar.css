@@ -1,77 +1,81 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
-.container{
-    width: 100vw;
-    min-height: 100vh;
-   
-   
-} */
+/* NavBar.css */
 
-.navbar{
-    width: 100%;
+.navbar {
+    background-color: #fff;
+  }
+  
+  .logo {
+    width: 120px; 
+  }
+  
+  .menu {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #fff;
-    padding:15px 7%;
-}
-.logo{
-    width: 147px;
-    cursor: pointer;
-}
-ul{
-    flex: 1;
+    margin-left: auto;
+  }
+  
+  .menu ul {
     list-style: none;
-    text-align: center;
-
-}
-ul li{
-    display:inline-block;
-    margin: 10px 20px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .menu li {
+    margin: 0 15px;
     font-size: 18px;
     cursor: pointer;
-    text-shadow: 0px 2px 4px;
-}
-/* .toggle-icon{
-    width: 50px;
-    cursor: pointer;
-    margin-left: 40px;
-} */
-.search-box{
+  }
   
+  .search-box {
     display: flex;
     align-items: center;
     background: #ffffff;
-    padding: 4px 20px;
-    border-radius: 37px;
-    margin-top: -15px;
-    box-shadow: 0px 3px;
-    
-
-}
-.search-box input{
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-left: 20px; 
+  }
+  
+  .search-box input {
     padding: 6px;
     background: transparent;
-    border: 0;
-    outline: 0;
+    border: none;
+    outline: none;
     color: #000000;
     font-size: 18px;
-    max-width: 200px;
-}
-
-.search-box input::placeholder{
+  }
+  
+  .search-box input::placeholder {
     color: #020202;
-}
-.search-box img{
+  }
+  
+  .search-box img {
     width: 20px;
     cursor: pointer;
-}
-
-.carti{
+  }
+  
+  .carti {
     width: 35px !important;
-    margin-top: -10px !important;
-}
+    margin-left: 10px;
+  }
+  
+  .menu.active ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .menu ul {
+      display: none;
+    }
+  
+    .menu {
+      position: relative;
+    }
+  }
+  

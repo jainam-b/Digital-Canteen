@@ -3,6 +3,7 @@ import "../Items/Items.css"
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import FoodCard from './FoodCard';
 import "./FoodCard.css"
+import "./FoodItem.css"
 function FoodItem() {
     return (
         <div>

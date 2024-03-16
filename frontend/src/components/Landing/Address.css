@@ -29,3 +29,26 @@ margin-top: 5%;
 .AddSecIcon{
     color: #f48e28 !important; 
 }
+
+
+@media only screen and (max-width: 600px){
+    .hrline {
+        height: 1vh !important;
+        width: 271px !important;
+        border-left: 0.5px solid black !important;
+    }
+    
+    
+    
+    .AddressBox {
+       
+        box-shadow: 2px 2px 2px 2px #d1d1d1;
+        display: flex;
+        width: 73%;
+        height: 59vh;
+        border-radius: 20px;
+        justify-content: space-evenly;
+        flex-direction: column;
+        display: flex;
+    }
+    }

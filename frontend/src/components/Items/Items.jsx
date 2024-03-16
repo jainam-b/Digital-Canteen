@@ -29,10 +29,10 @@ function Items() {
       try {
         const response = await axios.get('http://localhost:3000/order/menus');
         setProducts(response.data);
-        setLoading(false); // Set loading to false after data is fetched
-        setShowAlert(true); // Show alert after products are loaded
+        setLoading(false); 
+        setShowAlert(true); 
         setTimeout(() => {
-          setShowAlert(false); // Hide the alert after 2 seconds
+          setShowAlert(false);
         }, 2000);
       } catch (error) {
         console.error('Error fetching products:', error);
