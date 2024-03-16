@@ -18,6 +18,7 @@ import Products from './components/Productcard';
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
+import Checkout from './components/checkout/Checkout';
 
 
 
@@ -35,17 +36,6 @@ function App() {
          <Routes>
            <Route path="/payment" element={<Payment />}></Route>
            <Route path="/item" element={<Itemcard />}></Route>
-
-
-
-
-
-
-
-
-
-
-
  
            <Route path ="/" exact element={<Landing/>}/>
            <Route path ="/try" exact element={<FirstScreen/>}/>
@@ -58,6 +48,7 @@ function App() {
            <Route path="/product" element={<Products />}></Route>
            <Route path="/signup" element={<Signup />}></Route>
            <Route path="/login" element={<Login />}></Route>
+           <Route path="/checkout" element={<Checkout/>}></Route>
            
            {/* <Route path="/chart" element={<Charts />}></Route> */}
            
