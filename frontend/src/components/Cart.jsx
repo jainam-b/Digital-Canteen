@@ -1,145 +1,97 @@
-// CartPage.js
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useCart } from "./Context/CartContext";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Container, Typography, Grid, Card, CardContent, CardMedia, CardActions, IconButton } from "@mui/material";
+import { Remove, Add } from "@mui/icons-material";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
-import Itemcard from "./Items/Itemcard";
-import axios from "axios";
-import { useUser } from "./Context/UserContext ";
-import { spacing } from '@mui/system';
- 
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, clearCart } = useCart();
-  console.log("cartitems",cartItems);
+  const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const navigate = useNavigate();
+  const [itemQuantities, setItemQuantities] = useState({});
 
-  const handleClearCart = () => {
-    clearCart();
-    navigate('/item'); // Navigate back to the menu item page after clearing the cart
-  };
+  useEffect(() => {
+    const initialQuantities = {};
+    cartItems.forEach(item => {
+      initialQuantities[item.productName] = 1; // Set default quantity to 1 for each item
+    });
+    setItemQuantities(initialQuantities);
+  }, [cartItems]);
 
   const calculateTotalPrice = () => {
-    let totalPrice = 0; // Initialize totalPrice variable
+    let totalPrice = 0;
 
-    cartItems.forEach((item) => {
-      totalPrice += parseFloat(item.price); // Convert price to number if it's a string
+    cartItems.forEach(item => {
+      totalPrice += parseFloat(item.price) * itemQuantities[item.productName]; // Multiply by quantity
     });
 
-    setTotalPrice(totalPrice.toFixed(2)); // Round the total price to 2 decimal places
+    setTotalPrice(totalPrice.toFixed(2));
   };
 
   useEffect(() => {
     calculateTotalPrice();
-  }, [cartItems]);
- 
-  function loadScript(src) {
-    return new Promise((resolve) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => {
-        resolve(true);
-      };
-      script.onerror = () => {
-        resolve(false);
-      };
-      document.body.appendChild(script);
-    });
-  }
+  }, [cartItems, itemQuantities]);
 
-  async function displayRazorpay() {
-    const res = await loadScript(
-        "https://checkout.razorpay.com/v1/checkout.js"
-    );
+  const handleClearCart = () => {
+    clearCart();
+    // Navigate back to the menu item page after clearing the cart
+  };
 
-    if (!res) {
-        alert("Razorpay SDK failed to load. Are you online?");
-        return;
-    }
+  const handleQuantityChange = (itemName, newQuantity) => {
+    setItemQuantities({ ...itemQuantities, [itemName]: newQuantity });
+    updateCartItemQuantity(itemName, newQuantity);
+    calculateTotalPrice();
+  };
 
-    const result = await axios.post("http://localhost:3000/pay/orders", {
-        amount: 1000, // Update the amount with the new amount
-    });
-
-    if (!result) {
-        alert("Server error. Are you online?");
-        return;
-    }
-
-    const { amount, id: order_id, currency } = result.data;
-
-    const options = {
-        key: "rzp_test_YMSg1NivuORLa3", // Enter the Key ID generated from the Dashboard
-        amount: amount.toString(),
-        currency: currency,
-        name: "Soumya Corp.",
-        description: "Test Transaction",
-         
-        order_id: order_id,
-        handler: async function (response) {
-            const data = {
-                orderCreationId: order_id,
-                razorpayPaymentId: response.razorpay_payment_id,
-                razorpayOrderId: response.razorpay_order_id,
-                razorpaySignature: response.razorpay_signature,
-            };
-
-            const result = await axios.post("http://localhost:5000/payment/success", data);
-
-            alert(result.data.msg);
-        },
-        prefill: {
-            name: "Soumya Dey",
-            email: "SoumyaDey@example.com",
-            contact: "9999999999",
-        },
-        notes: {
-            address: "Soumya Dey Corporate Office",
-        },
-        theme: {
-            color: "#61dafb",
-        },
-    };
-
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-}
   return (
-    <div>
-      <Button variant="contained" className="Cart" style={{ marginLeft: '90%',marginTop: '1%' }} onClick={handleClearCart}>
-  Clear Cart
-</Button>
-
-      <div>
-        <div className="Items">
-          <h3>Cart Items</h3>
-          <div className="productMenu  " style={{ justifyContent: 'center' }} >
-            {cartItems.length > 0 ? (
-              cartItems.map((item, index) => (
-                <Itemcard
-                  key={index}
-                  productId={item._id}
-                  image="sandwich.png" // Replace with the actual image URL
-                  productName={item.productName}
-                  // rating={item.productName} // Assuming rating is a property of the product object
-                  price={`₹${item.price}`} // Assuming price is a property of the product object
-                />
-              ))
-            ) : (
-              <p>No products found</p>
-            )}
-          </div>
-
-          <div>Total Price: {totalPrice}</div>
-        </div>
-      </div>
-      <Button variant="contained" onClick={displayRazorpay} className="Cart">
-        Pay
-      </Button>
-    </div>
+    <Container maxWidth="md" className="order-payment-container">
+      <Typography variant="h4" align="center" gutterBottom>
+        Order Payment
+      </Typography>
+      <Grid container spacing={2}>
+        {/* Section 1: Cart Items */}
+        <Grid item xs={12} md={6}>
+          <Typography variant="h6" gutterBottom>
+            Cart Items
+          </Typography>
+          {cartItems.map((item, index) => (
+            <Card key={index} sx={{ display: "flex", marginBottom: 2 }}>
+              <CardMedia component="img" sx={{ width: 150, objectFit: "cover" }} image={"./sandwich.png"} alt={item.productName} />
+              <CardContent sx={{ flex: "1 0 auto" }}>
+                <Typography variant="h6">{item.productName}</Typography>
+                <Typography variant="body1">Price: ₹{item.price}</Typography>
+              </CardContent>
+              <CardActions sx={{ justifyContent: "flex-end", alignItems: "center" }}>
+                <IconButton onClick={() => handleQuantityChange(item.productName, Math.max(itemQuantities[item.productName] - 1, 1))} size="small">
+                  <Remove />
+                </IconButton>
+                <Typography variant="body1">{itemQuantities[item.productName]}</Typography>
+                <IconButton onClick={() => handleQuantityChange(item.productName, itemQuantities[item.productName] + 1)} size="small">
+                  <Add />
+                </IconButton>
+                <IconButton onClick={() => removeFromCart(item.id)} size="small">
+                  Remove
+                </IconButton>
+              </CardActions>
+            </Card>
+          ))}
+          <Button variant="contained" onClick={handleClearCart} className="Cart" style={{ marginTop: '1rem' }}>
+            Clear Cart
+          </Button>
+        </Grid>
+        {/* Section 2: Total Price */}
+        <Grid item xs={12} md={6}>
+          <Typography variant="h6" gutterBottom>
+            Total Price
+          </Typography>
+          <Typography variant="body1">₹{totalPrice}</Typography>
+          <Button variant="contained" endIcon={<ArrowForwardIosIcon />}   className="Cart" style={{ marginTop: '1rem' }}>
+            Pay
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

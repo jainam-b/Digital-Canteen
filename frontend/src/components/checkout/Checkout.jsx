@@ -1,11 +1,13 @@
-// OrderPaymentPage.js
 import React, { useState } from 'react';
 import { Container, Typography, Grid, TextField, Button, FormControl, InputLabel, Select, MenuItem, Card, CardContent, CardMedia, CardActions, IconButton } from '@mui/material';
 import { Remove, Add } from '@mui/icons-material';
 import './Checkout.css';
 import NavBar from '../NavBar/NavBar';
+import { useCart } from "../Context/CartContext";
 
 function Checkout() {
+  const { cartItems, removeFromCart, clearCart } = useCart();
+  console.log("cartitems",cartItems);
   const [itemQuantities, setItemQuantities] = useState({
     Pizza: 1,
     Burger: 2,
@@ -16,12 +18,12 @@ function Checkout() {
     setItemQuantities({ ...itemQuantities, [itemName]: value });
   };
 
-  const [formData] = useState({
-    name: 'John Doe',
-    phone: '1234567890',
-    email: 'john@example.com',
-    paymentMethod: ''
-  });
+  // const [formData] = useState({
+  //   name: 'John Doe',
+  //   phone: '1234567890',
+  //   email: 'john@example.com',
+  //   paymentMethod: ''
+  // });
 
   const handleChange = (e) => {
     // Handle payment method selection change if needed
@@ -40,13 +42,13 @@ function Checkout() {
 
   // Calculate total price
   const totalPrice = Object.keys(itemQuantities).reduce((total, itemName) => {
-    return total + (itemQuantities[itemName] * items.find(item => item.name === itemName).price);
+    return total + (itemQuantities[itemName] * cartItems.find(item => item.name === itemName).price);
   }, 0);
 
   return (
     <>
     <NavBar/>
-   
+
     <Container maxWidth="md" className="order-payment-container">
       <Typography variant="h4" align="center" gutterBottom>
         Order Payment
@@ -57,7 +59,7 @@ function Checkout() {
           <Typography variant="h6" gutterBottom>
             Item Details
           </Typography>
-          {items.map((item, index) => (
+          {cartItems.map((item, index) => (
             itemQuantities[item.name] > 0 && (
               <Card key={index} sx={{ display: 'flex', marginBottom: 2 }}>
                 <CardMedia
@@ -90,7 +92,7 @@ function Checkout() {
           ))}
         </Grid>
         {/* Section 2: Customer Details */}
-        <Grid item xs={12} md={6}>
+        {/* <Grid item xs={12} md={6}>
           <Typography variant="h6" gutterBottom>
             Customer Details
           </Typography>
@@ -104,7 +106,7 @@ function Checkout() {
               value={formData.name}
               required
             />
-          
+
             <TextField
               label="Phone"
               variant="outlined"
@@ -147,7 +149,7 @@ function Checkout() {
               Confirm Order
             </Button>
           </form>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Container>
     </>

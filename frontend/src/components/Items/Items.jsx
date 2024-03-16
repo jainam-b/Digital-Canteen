@@ -75,7 +75,7 @@ function Items() {
           </div>
         )}
       </div>
-      <SwipeableEdgeDrawer   />
+       
     </div>
   );
 }
