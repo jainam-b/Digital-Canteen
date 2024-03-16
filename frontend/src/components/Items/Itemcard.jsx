@@ -9,7 +9,7 @@ import StarIcon from "@mui/icons-material/Star";
 import "./Itemcard.css";
 import { useCart } from "../Context/CartContext"; // Import useCart from CartContext
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-
+import Alert from '@mui/material/Alert';
 export default function Itemcard({
   image,
   productName,
@@ -23,6 +23,7 @@ export default function Itemcard({
   const handleAddToCart = () => {
     // Call addToCart function to add the item to the cart
     addToCart({ productId, productName, price });
+    showAlert() 
   };
 
   const handleGoToCart = () => {

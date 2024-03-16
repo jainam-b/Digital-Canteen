@@ -7,7 +7,8 @@ import Payment from "./components/Payments";
 import Landing from "./components/Landing/Landing";
 import FirstScreen from "./components/Landing/FirstScreen";
 import Products from "./components/Productcard";
-import MenuItem from "./components/MenuItems";
+// import MenuItem from "./components/MenuItems";
+import Items from "./components/Items/Items";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/try" exact element={<FirstScreen />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/product" element={<Products />} />
-          <Route path="/menu-items" element={<MenuItem />} />
+          <Route path="/menu-items" element={<Items />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
