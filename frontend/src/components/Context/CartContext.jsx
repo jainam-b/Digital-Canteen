@@ -6,6 +6,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [showAlert, setShowAlert] = useState(false); // State variable to control alert visibility
 
   useEffect(() => {
     // Load cart items from localStorage only on component mount
@@ -26,6 +27,8 @@ export const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems);
     console.log(product);
+    showAlert();
+    
   };
 
   const removeFromCart = (productId) => {

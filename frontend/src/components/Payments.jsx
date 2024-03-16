@@ -26,7 +26,7 @@ function Payment() {
             return;
         }
 
-        const result = await axios.post("http://localhost:3001/pay/orders");
+        const result = await axios.post("http://localhost:3000/pay/orders");
 
         if (!result) {
             alert("Server error. Are you online?");
@@ -37,7 +37,7 @@ function Payment() {
 
         const options = {
             key: "rzp_test_YMSg1NivuORLa3", // Enter the Key ID generated from the Dashboard
-            amount: amount.toString(),
+            amount: "1200",
             currency: currency,
             name: "Soumya Corp.",
             description: "Test Transaction",
@@ -56,7 +56,7 @@ function Payment() {
                 alert(result.data.msg);
             },
             prefill: {
-                name: "Soumya Dey",
+                name: "Canteen ",
                 email: "SoumyaDey@example.com",
                 contact: "9999999999",
             },
