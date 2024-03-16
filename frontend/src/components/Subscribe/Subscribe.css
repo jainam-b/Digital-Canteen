@@ -1,49 +1,65 @@
-.SubscribeBBox{
+.SubscribeBBox {
     background-color: black;
-    height: 40vh;
-    width: 68%;
+    height: auto; /* Change height to auto to adjust based on content */
+    max-width: 900px; /* Set maximum width to control responsiveness */
     border-radius: 36px;
     display: flex;
-}
-.Subscribe{
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 13%;
-
-}
-.subscribeButton{
-   background-color: #f48e28 !important;
-}
-
-.Subscribeimage{
-    position:absolute;
-    width: 30%;
-    margin-top: -78px;
-
-}
-
-.subContent{
+    flex-wrap: wrap; /* Allow content to wrap to next line */
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add padding for better spacing */
+  }
+  
+  .Subscribe {
     display: flex;
-    position: absolute;
-    right: 17%;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  
+  .Subscribeimage {
     width: 30%;
+    max-width: 250px; /* Set maximum width for responsiveness */
+  }
+  
+  .subContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Occupy full width */
+    max-width: 400px; /* Set maximum width for responsiveness */
     justify-content: space-around;
     color: white;
-    height: 100px;
-    align-items: center;
-    margin-top: 85px;
-
-}
-
-.SubscribeInput
-{
+    margin-left: 20px; /* Add margin for spacing */
+    margin-top: 20px; /* Add margin for spacing */
+  }
+  
+  .SubscribeInput {
     display: flex;
-}
-.SubscribeInput>input{
+    align-items: center;
+  }
+  
+  .SubscribeInput > input {
     border-radius: 5px;
-}
-.SubscribeInput>button{
+    margin-right: 10px; /* Add margin for spacing */
+  }
+  
+  .SubscribeInput > button {
     border-radius: 10px;
-}
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .SubscribeBBox {
+      width: 90%; /* Adjust width for smaller screens */
+    }
+  
+    .Subscribeimage {
+      width: 40%; /* Adjust image width for smaller screens */
+    }
+  
+    .subContent {
+      width: 100%; /* Occupy full width on smaller screens */
+      margin: 20px auto; /* Center the content */
+      text-align: center; /* Center the text */
+    }
+  }
+  

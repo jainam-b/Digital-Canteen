@@ -1,37 +1,50 @@
-import React from 'react'
-import './Login.css'
+// Login.js
+import React from 'react';
+import { Container, Typography, TextField, Button, Grid } from '@mui/material';
+import './Login.css';
 
 const Login = () => {
   return (
     <div className='loginPage'>
-    <div className='container con2'>
-      <div className='header'>
-        <div className='text'> Login</div>
-        <div className='underline'></div>
-      </div>
-      <div className="inputs">
-        <div className="input">
-          <img src="mail.png" alt="" />
-          <input type="Email"  placeholder= "Email id"/>
+      {/* <div className="background"></div> */}
+      <Container maxWidth="sm" className="loginContainer">
+        <Typography variant="h4" align="center" gutterBottom>
+          Login
+        </Typography>
+        <form>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                variant="outlined"
+                placeholder="Email id"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Password"
+                variant="outlined"
+                type="password"
+                placeholder="Password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained"   className='LoginBtn'>
+                Login
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+        <div className="forgotPassword">
+          <Typography variant="body1">
+            Lost Password? <span>Click here</span>
+          </Typography>
         </div>
-
-        <div className="input">
-          <img src="password.png" alt="" />
-          <input className='inputpass' type="Password" placeholder='Password' />
-        </div>
-        <div className="forgotpassword">Lost Password? <span>click here</span></div>
-        <div className='submit-container'>
-          <div className='submit'>Signup</div>
-          <div className='submit'>Login
-          </div>
-        </div>
-      </div>
+      </Container>
     </div>
-    <div className='loginImage'>
-      <img src="foood.png" alt=""  />
-    </div>
-    </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

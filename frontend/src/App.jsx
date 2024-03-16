@@ -13,6 +13,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import { UserProvider } from './components/Context/UserContext ';
 import Items from "./components/Items/Items";
+import Checkout from "./components/checkout/Checkout";
 function App() {
   const [count, setCount] = useState(0)
 
@@ -27,6 +28,8 @@ function App() {
           <Route path="/try" exact element={<FirstScreen />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/product" element={<Products />} />
+          <Route path="/checkout" element={<Checkout />} />
+          
           {/* <Route path="/menu-items" element={<MenuItem />} /> */}
           <Route path="/signup" element={<Signup />}></Route>
            <Route path="/login" element={<Login />}></Route>

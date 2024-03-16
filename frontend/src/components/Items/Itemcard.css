@@ -1,35 +1,51 @@
-.prodCard{
-    width: 275px;
-    padding: 0px ;
+.prodCard {
+    width: calc(50% - 20px); 
+    max-width: 275px; 
     border-radius: 20px !important;
-}
-.prodimage{
-    width: 100%;
-}
-.css-46bh2p-MuiCardContent-root {
-    padding: 0px !important;
-
-}
-.prodIntro,.CartItem{
+    margin-bottom: 20px; 
+  }
+  
+  .outerCard {
+ 
+    padding: 0 10px; 
+  }
+  
+  .prodimage {
+    width: 100%; 
+    height: auto; 
+  }
+  
+  .prodIntro, .CartItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-}
-.prodIntro>span>svg{
-    color: #f48e28;
-}
-.Cart{
+  }
+  
+  .prodIntro>span>svg {
+    font-size: 16px; 
+  }
+  
+  .Cart {
     background-color: #f48e28 !important;
     border-radius: 20px !important;
+    font-size: 14px; 
+    padding: 8px 16px; 
+  }
+  
+  .CartItem {
+    padding: 6px !important;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .prodCard {
+      width: calc(50% - 20px); 
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .prodCard {
+      width: calc(100% - 20px); 
+    }
 }
-.CartItem{
-padding: 6px !important;
-}
-.css-dnrpxu-MuiCardActions-root{
-    padding: 0px;
-}
-.outerCard{
-    width: 33%;
-    padding: 10px 0px;
-}
+  }
+  
