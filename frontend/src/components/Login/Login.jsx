@@ -6,7 +6,7 @@ import './Login.css';
 const Login = () => {
   return (
     <div className='loginPage'>
-      <div className="background"></div>
+      {/* <div className="background"></div> */}
       <Container maxWidth="sm" className="loginContainer">
         <Typography variant="h4" align="center" gutterBottom>
           Login
@@ -31,7 +31,7 @@ const Login = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" color="primary" fullWidth>
+              <Button variant="contained"   className='LoginBtn'>
                 Login
               </Button>
             </Grid>

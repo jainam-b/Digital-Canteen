@@ -1,0 +1,16 @@
+.Items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    padding: 0 20px; /* Add padding for better spacing on smaller screens */
+  }
+  
+  .Foodcards {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next row */
+    justify-content: center;
+    width: 100%; /* Adjust width to fit all cards on smaller screens */
+    gap: 20px; /* Add gap between cards */
+  }
+  
