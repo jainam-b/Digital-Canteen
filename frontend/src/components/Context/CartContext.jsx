@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import Alert from '@mui/material/Alert';
 
 const CartContext = createContext();
 
@@ -15,7 +16,6 @@ export const CartProvider = ({ children }) => {
       setCartItems(JSON.parse(storedCartItems));
     }
   }, []); // Empty dependency array ensures the effect runs only once on mount
-  
 
   const saveCartItemsToStorage = (items) => {
     // Save cart items to localStorage
@@ -26,9 +26,12 @@ export const CartProvider = ({ children }) => {
     const updatedCartItems = [...cartItems, product];
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems);
-    console.log(product);
-    showAlert();
-    
+    setShowAlert(true); // Set showAlert to true when item is added to cart
+
+    // Hide the alert after 2 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 100000);
   };
 
   const removeFromCart = (productId) => {
@@ -36,18 +39,23 @@ export const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems);
   };
-  
 
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem('cartItems'); // Remove cart items from localStorage
-    console.log(cartItems);
   };
-  
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
       {children}
+      {/* Display the alert when showAlert is true */}
+<div style={{ position: 'fixed', top: 0, right: 0, zIndex: 999,marginTop:"1%", textAlign: 'right' }}>
+  {showAlert && (
+    <Alert severity="success" onClose={() => setShowAlert(false)}>Item added successfully!</Alert>
+  )}
+</div>
+
+
     </CartContext.Provider>
   );
 };

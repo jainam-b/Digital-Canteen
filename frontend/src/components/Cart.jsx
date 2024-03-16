@@ -7,10 +7,20 @@ import { useNavigate } from "react-router-dom";
 import Itemcard from "./Items/Itemcard";
 import axios from "axios";
 import { useUser } from "./Context/UserContext ";
+import { spacing } from '@mui/system';
+ 
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart } = useCart();
+  console.log("cartitems",cartItems);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const navigate = useNavigate();
+
+  const handleClearCart = () => {
+    clearCart();
+    navigate('/item'); // Navigate back to the menu item page after clearing the cart
+  };
 
   const calculateTotalPrice = () => {
     let totalPrice = 0; // Initialize totalPrice variable
@@ -99,11 +109,14 @@ const CartPage = () => {
 }
   return (
     <div>
-      <button onClick={clearCart}>Clear Cart</button>
+      <Button variant="contained" className="Cart" style={{ marginLeft: '90%',marginTop: '1%' }} onClick={handleClearCart}>
+  Clear Cart
+</Button>
+
       <div>
         <div className="Items">
           <h3>Cart Items</h3>
-          <div className="productMenu">
+          <div className="productMenu  " style={{ justifyContent: 'center' }} >
             {cartItems.length > 0 ? (
               cartItems.map((item, index) => (
                 <Itemcard

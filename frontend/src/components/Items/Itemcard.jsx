@@ -23,7 +23,7 @@ export default function Itemcard({
   const handleAddToCart = () => {
     // Call addToCart function to add the item to the cart
     addToCart({ productId, productName, price });
-    showAlert() 
+    
   };
 
   const handleGoToCart = () => {

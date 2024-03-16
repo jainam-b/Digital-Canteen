@@ -17,6 +17,11 @@ function Items() {
     let path = `/menu-items`; 
     navigate(path);
   }
+  const handlenavigateCart=()=>{
+    let path = `/cart`; 
+    navigate(path);
+
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,11 +43,10 @@ function Items() {
 
   return (
     <div>
-      {showAlert && (
-        <div className="alert">
-         <Alert severity="success">Item add to cart </Alert>
-        </div>
-      )}
+       <Button variant="contained" className="Cart" style={{ marginLeft: '90%',marginTop: '1%' }} onClick={handlenavigateCart}>
+ Show Cart
+</Button>
+      
       <div className='Items'>
         <h3>Most Popular Items</h3>
         {loading ? ( // Display loader if loading is true
