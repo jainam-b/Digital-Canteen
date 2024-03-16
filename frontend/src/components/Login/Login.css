@@ -1,7 +1,7 @@
 /* Login.css */
 .background {
   width: 100%;
-  min-height: 100vh; /* Use min-height instead of height for better responsiveness */
+  min-height: 100vh; 
   background-color: #f0f0f0;
   z-index: -1; 
 }
@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Use vh units for height to ensure it takes full viewport height */
+  height: 100vh; 
   background-color: #797979;
 }
 
@@ -23,8 +23,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px; /* Limit the maximum width to avoid stretching on larger screens */
-  width: 90%; /* Responsive width */
+  max-width: 400px;
+  width: 90%; 
 }
 
 .forgotPassword {
@@ -38,16 +38,16 @@
 }
 
 .css-cuefkz-MuiContainer-root {
-  height: auto; /* Remove fixed height to allow content to expand */
+  height: auto;
 }
 
 .LoginBtn {
   background-color: #f48e28 !important;
-  width: 50%; /* Adjust button width as needed */
+  width: 50%; 
   border-radius: 20px;
-  margin-top: 20px; /* Add margin to separate from other elements */
+  margin-top: 20px; 
 }
 
 form {
-  width: 100%; /* Ensure the form takes full width of its container */
+  width: 100%; 
 }
