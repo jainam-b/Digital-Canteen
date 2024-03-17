@@ -19,7 +19,7 @@ router.post("/signup", (req, res) => {
   try {
     
     const userData = createUser.safeParse(req.body);
-
+console.log(userData);
     // Create user if validation succeeds
     const user = User.create({
       username: userData.data.username,
@@ -42,27 +42,27 @@ router.post("/signup", (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const userData = loginUser.safeParse(req.body);
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (!user) {
       // User not found
-      return res.status(401).json({ msg: "Invalid username or password" });
+      return res.status(401).json({ msg: "Invalid email or password" });
     }
 
     const isPasswordValid = password === user.password;
 
     if (isPasswordValid) {
-      const token = jwt.sign({ username }, JWT_SECRET);
-      
+      const token = jwt.sign({ email }, JWT_SECRET);
+
       // Set the token in the response header
       res.setHeader('Authorization', `Bearer ${token}`);
-      console.log(token);
-      // Include token in response body if needed
+      
+      // Send token in the response body
       res.json({ token });
     } else {
-      res.status(401).json({ msg: "Invalid username or password" });
+      res.status(401).json({ msg: "Invalid email or password" });
     }
   } catch (error) {
     res.status(500).json({
@@ -71,5 +71,7 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+
+
 router.use(errorHandler);
 module.exports = router;

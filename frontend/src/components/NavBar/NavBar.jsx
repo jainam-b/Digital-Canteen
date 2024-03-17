@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   AppBar,
   Toolbar,
@@ -11,21 +11,25 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 import { useCart } from "../Context/CartContext";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { cartItems } = useCart();
+  const { isAuthenticated, user, logOut } = useContext(AuthContext);
 
-  const handlenavigateSignUp = () => {
-    let path = `/signup`;
+  const handleNavigateSignUp = () => {
+    let path = isAuthenticated() ? `/logout` : `/signup`;
     navigate(path);
   };
-  const handlenavigateCart = () => {
+
+  const handleNavigateCart = () => {
     let path = `/cart`;
     navigate(path);
   };
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -59,14 +63,14 @@ const NavBar = () => {
             style={{ marginRight: "20px" }}
           />
 
-          <div className="cart" onClick={handlenavigateCart}>
+          <div className="cart" onClick={handleNavigateCart}>
             <span className="count">{cartItems.length}</span>
             <ShoppingCartIcon />
           </div>
         </div>
 
-        <div className="submit" onClick={handlenavigateSignUp}>
-          Signup
+        <div className="submit" onClick={handleNavigateSignUp}>
+          {isAuthenticated() ? "Logout" : "Signup"}
         </div>
 
         <IconButton
