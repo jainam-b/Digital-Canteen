@@ -53,9 +53,9 @@ function Checkout() {
       <Typography variant="h4" align="center" gutterBottom>
         Order Payment
       </Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{width:"10%"}} >
         {/* Section 1: Item Details */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} >
           <Typography variant="h6" gutterBottom>
             Item Details
           </Typography>

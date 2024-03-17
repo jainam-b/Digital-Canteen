@@ -6,7 +6,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress'; // Import CircularProgress for the loader
 import { useNavigate } from "react-router-dom"; 
-import SwipeableEdgeDrawer from './Explore'; // Adjust the path as per your file structure
+import NavBar from '../NavBar/NavBar';
 
 
 function Items() {
@@ -43,11 +43,11 @@ function Items() {
   }, []);
 
   return (
-    <div>
-       <Button variant="contained" className="Cart" style={{ marginLeft: '90%',marginTop: '1%' }} onClick={handlenavigateCart}>
- Show Cart
-</Button>
-      
+    <><NavBar></NavBar><div>
+      <Button variant="contained" className="Cart" style={{ marginLeft: '90%', marginTop: '1%' }} onClick={handlenavigateCart}>
+        Show Cart
+      </Button>
+
       <div className='Items'>
         <h3>Most Popular Items</h3>
         {loading ? ( // Display loader if loading is true
@@ -75,8 +75,8 @@ function Items() {
           </div>
         )}
       </div>
-       
-    </div>
+
+    </div></>
   );
 }
 

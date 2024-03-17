@@ -23,19 +23,31 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (product) => {
-    const updatedCartItems = [...cartItems, product];
-    setCartItems(updatedCartItems);
-    saveCartItemsToStorage(updatedCartItems);
+    const existingItemIndex = cartItems.findIndex((item) => item.productName === product.productName);
+
+    if (existingItemIndex !== -1) {
+      // Item already exists in the cart, increase its quantity
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[existingItemIndex].quantity += product.quantity || 1; // Increase quantity by 1 or product.quantity
+      setCartItems(updatedCartItems);
+      saveCartItemsToStorage(updatedCartItems);
+    } else {
+      // Item does not exist in the cart, add it
+      const updatedCartItems = [...cartItems, product];
+      setCartItems(updatedCartItems);
+      saveCartItemsToStorage(updatedCartItems);
+    }
+
     setShowAlert(true); // Set showAlert to true when item is added to cart
 
     // Hide the alert after 2 seconds
     setTimeout(() => {
       setShowAlert(false);
-    }, 100000);
+    }, 2000);
   };
 
-  const removeFromCart = (productId) => {
-    const updatedCartItems = cartItems.filter(item => item.id !== productId);
+  const removeFromCart = (productName) => {
+    const updatedCartItems = cartItems.filter((item) => item.productName !== productName);
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems);
   };
@@ -44,18 +56,27 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
     localStorage.removeItem('cartItems'); // Remove cart items from localStorage
   };
+  const updateCartItemQuantity = (itemName, newQuantity) => {
+    // Find the item in the cartItems array and update its quantity
+    const updatedCartItems = cartItems.map(item => {
+      if (item.productName === itemName) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+
+    setCartItems(updatedCartItems);
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart,updateCartItemQuantity }}>
       {children}
       {/* Display the alert when showAlert is true */}
-<div style={{ position: 'fixed', top: 0, right: 0, zIndex: 999,marginTop:"1%", textAlign: 'right' }}>
-  {showAlert && (
-    <Alert severity="success" onClose={() => setShowAlert(false)}>Item added successfully!</Alert>
-  )}
-</div>
-
-
+      <div style={{ position: 'fixed', top: 0, right: 0, zIndex: 999, marginTop: "1%", textAlign: 'right' }}>
+        {showAlert && (
+          <Alert severity="success" onClose={() => setShowAlert(false)}>Item added successfully!</Alert>
+        )}
+      </div>
     </CartContext.Provider>
   );
 };

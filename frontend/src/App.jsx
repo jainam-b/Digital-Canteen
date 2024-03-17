@@ -6,7 +6,7 @@ import CartPage from "./components/Cart";
 import Payment from "./components/Payments";
 import Landing from "./components/Landing/Landing";
 import FirstScreen from "./components/Landing/FirstScreen";
-import Products from "./components/Productcard";
+ 
 // import MenuItem from "./components/MenuItems";
 import NavBar from './components/NavBar/NavBar';
 import Login from './components/Login/Login';
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" exact element={<Landing />} />
           <Route path="/try" exact element={<FirstScreen />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/product" element={<Products />} />
+          {/* <Route path="/product" element={<Products />} /> */}
           <Route path="/checkout" element={<Checkout />} />
           
           {/* <Route path="/menu-items" element={<MenuItem />} /> */}
