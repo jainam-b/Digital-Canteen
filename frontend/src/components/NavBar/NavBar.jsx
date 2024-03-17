@@ -1,34 +1,48 @@
-// NavBar.js
-
-import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, InputBase } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import './NavBar.css';
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import "./NavBar.css";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../Context/CartContext";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const navigate = useNavigate(); 
-   
-  const handlenavigateSignUp=()=>{
-    let path = `/signup`; 
-    navigate(path);
+  const navigate = useNavigate();
+  const { cartItems } = useCart();
 
-  }
+  const handlenavigateSignUp = () => {
+    let path = `/signup`;
+    navigate(path);
+  };
+  const handlenavigateCart = () => {
+    let path = `/cart`;
+    navigate(path);
+  };
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
-    <AppBar position="static" className="navbar  " style={{borderRadius:"18px"}} color="inherit">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+    <AppBar
+      position="static"
+      className="navbar"
+      style={{ borderRadius: "18px" }}
+      color="inherit"
+    >
+      <Toolbar style={{ justifyContent: "space-between" }}>
+        <Typography variant="h6" component="div">
           <img src="foodlogo.png" alt="Logo" className="logo" />
         </Typography>
 
-        <div className={`menu ${showMenu ? 'active' : ''}`}>
+        <div className={`menu ${showMenu ? "active" : ""}`}>
           <ul>
             <li>Home</li>
             <li>Menu</li>
@@ -37,27 +51,37 @@ const NavBar = () => {
           </ul>
         </div>
 
+        <div className="search-box">
+          <SearchIcon style={{ marginRight: "20px" }} />
+          <InputBase
+            placeholder="Search"
+            inputProps={{ "aria-label": "search" }}
+            style={{ marginRight: "20px" }}
+          />
+
+          <div className="cart" onClick={handlenavigateCart}>
+            <span className="count">{cartItems.length}</span>
+            <ShoppingCartIcon />
+          </div>
+        </div>
+
+        <div className="submit" onClick={handlenavigateSignUp}>
+          Signup
+        </div>
+
         <IconButton
           size="large"
           edge="start"
           color="inherit"
           aria-label="menu"
           onClick={toggleMenu}
-         
-          sx={{ mr: 5, display: { md: 'none' } }}
+          sx={{ display: { md: "none" } }}
         >
           <MenuIcon />
         </IconButton>
-
-        <div className='search-box'  >
-          <SearchIcon />
-          <InputBase placeholder="Search..." inputProps={{ 'aria-label': 'search' }} />
-          <ShoppingCartIcon className='carti' />
-          <div   className='submit' onClick={handlenavigateSignUp}>Signup</div>
-        </div>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default NavBar;

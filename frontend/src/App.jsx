@@ -26,7 +26,7 @@ function App() {
           <Route path="/item" element={<Items />} />
           <Route path="/" exact element={<Landing />} />
           <Route path="/try" exact element={<FirstScreen />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/cart" element={<CartPage />} />      {/* cart page or checkout page */}
           {/* <Route path="/product" element={<Products />} /> */}
           <Route path="/checkout" element={<Checkout />} />
           

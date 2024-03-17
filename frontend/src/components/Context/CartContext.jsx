@@ -64,9 +64,11 @@ export const CartProvider = ({ children }) => {
       }
       return item;
     });
-
+  
     setCartItems(updatedCartItems);
+    saveCartItemsToStorage(updatedCartItems); // Save updated cart items to local storage
   };
+  
 
   return (
     <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart,updateCartItemQuantity }}>

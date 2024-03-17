@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import axios from "axios"; // Import axios for making HTTP requests
 import Payment from "./Payments";
+import NavBar from "./NavBar/NavBar";
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } =
@@ -168,9 +169,9 @@ async function displayRazorpay() {
   
 
   return (
-    <Container maxWidth="md" className="order-payment-container">
+    <><NavBar></NavBar><Container maxWidth="md" className="order-payment-container">
       <Typography variant="h4" align="center" gutterBottom>
-        Order Payment
+
       </Typography>
       <Grid container spacing={2}>
         {/* Section 1: Cart Items */}
@@ -187,8 +188,7 @@ async function displayRazorpay() {
                 component="img"
                 sx={{ width: 150, objectFit: "cover" }}
                 image={"./sandwich.png"}
-                alt={item.productName}
-              />
+                alt={item.productName} />
               <CardContent sx={{ flex: "1 0 auto" }}>
                 <Typography variant="h6">{item.productName}</Typography>
                 <Typography variant="body1">Price: ₹{item.price}</Typography>
@@ -197,12 +197,10 @@ async function displayRazorpay() {
                 sx={{ justifyContent: "flex-end", alignItems: "center" }}
               >
                 <IconButton
-                  onClick={() =>
-                    handleQuantityChange(
-                      item.productName,
-                      itemQuantities[item.productName] - 1
-                    )
-                  }
+                  onClick={() => handleQuantityChange(
+                    item.productName,
+                    itemQuantities[item.productName] - 1
+                  )}
                   size="small"
                 >
                   <Remove />
@@ -211,12 +209,10 @@ async function displayRazorpay() {
                   {itemQuantities[item.productName]}
                 </Typography>
                 <IconButton
-                  onClick={() =>
-                    handleQuantityChange(
-                      item.productName,
-                      itemQuantities[item.productName] + 1
-                    )
-                  }
+                  onClick={() => handleQuantityChange(
+                    item.productName,
+                    itemQuantities[item.productName] + 1
+                  )}
                   size="small"
                 >
                   <Add />
@@ -230,33 +226,45 @@ async function displayRazorpay() {
               </CardActions>
             </Card>
           ))}
-          <Button
-            variant="contained"
-            onClick={handleClearCart}
-            className="Cart"
-            style={{ marginTop: "1rem" }}
-          >
-            Clear Cart
-          </Button>
+          {/* <Button
+      variant="contained"
+      onClick={handleClearCart}
+      className="Cart"
+      style={{ marginTop: "1rem" }}
+    >
+      Clear Cart
+    </Button> */}
         </Grid>
         {/* Section 2: Total Price */}
-        <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom>
-            Total Price
-          </Typography>
-          <Typography variant="body1">₹{totalPrice}</Typography>
-          <Button
-            variant="contained"
-            endIcon={<ArrowForwardIosIcon />}
-            className="Cart"
-            style={{ marginTop: "1rem" }}
-            onClick={displayRazorpay} // Call handlePay function when the "Pay" button is clicked
-          >
-            Pay
-          </Button>
+        <Grid container spacing={2}>
+          {/* Total Price Text */}
+          <Grid item xs={6}>
+            <Typography variant="h6" style={{ marginLeft: "16px" }} gutterBottom>
+              Total Price
+            </Typography>
+          </Grid>
+
+          {/* Price Value */}
+          <Grid item xs={6} style={{ textAlign: "right" }}>
+            <Typography variant="body1">₹{totalPrice}</Typography>
+          </Grid>
+
+          {/* Pay Button */}
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              endIcon={<ArrowForwardIosIcon />}
+              className="Cart"
+              style={{ marginTop: "1rem", marginLeft: "18px", width: "-webkit-fill-available" }}
+              onClick={displayRazorpay} // Call handlePay function when the "Pay" button is clicked
+            >
+              Proceed To  Pay
+            </Button>
+          </Grid>
         </Grid>
+
       </Grid>
-    </Container>
+    </Container></>
   );
 };
 
