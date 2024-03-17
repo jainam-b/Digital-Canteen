@@ -1,3 +1,5 @@
+/* CSS for the Signup component */
+
 .background2 {
   background-color: #797979;
   height: 100vh;
@@ -6,17 +8,14 @@
   align-items: center;
 }
 
-
-
 .container2 {
-  width: 136% !important;
-    height: 67vh !important;
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 3px 5px 14px 0px;
-    width: 90%;
-    max-width: 500px; 
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 3px 5px 14px 0px;
 }
 
 .header {
@@ -89,6 +88,5 @@
   background: #f48e28;
   border-radius: 20px;
   font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
 }
+  
