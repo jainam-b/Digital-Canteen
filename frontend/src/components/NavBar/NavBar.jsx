@@ -37,7 +37,7 @@ const NavBar = () => {
       style={{ borderRadius: "18px" }}
       color="inherit"
     >
-      <Toolbar style={{ justifyContent: "space-between" }}>
+      <Toolbar style={{ justifyContent: "space-between" }} className="NavToolBar">
         <Typography variant="h6" component="div">
           <img src="foodlogo.png" alt="Logo" className="logo" />
         </Typography>
@@ -50,25 +50,7 @@ const NavBar = () => {
             <li>Shop</li>
           </ul>
         </div>
-
-        <div className="search-box">
-          <SearchIcon style={{ marginRight: "20px" }} />
-          <InputBase
-            placeholder="Search"
-            inputProps={{ "aria-label": "search" }}
-            style={{ marginRight: "20px" }}
-          />
-
-          <div className="cart" onClick={handlenavigateCart}>
-            <span className="count">{cartItems.length}</span>
-            <ShoppingCartIcon />
-          </div>
-        </div>
-
-        <div className="submit" onClick={handlenavigateSignUp}>
-          Signup
-        </div>
-
+ 
         <IconButton
           size="large"
           edge="start"
@@ -76,9 +58,19 @@ const NavBar = () => {
           aria-label="menu"
           onClick={toggleMenu}
           sx={{ display: { md: "none" } }}
+          className="HamBurger"
         >
           <MenuIcon />
         </IconButton>
+        
+
+        <div className="submit" onClick={handlenavigateSignUp}>
+          Signup
+        </div>
+        <div className="cart" onClick={handlenavigateCart}>
+            <span className="count">{cartItems.length}</span>
+            <ShoppingCartIcon />
+          </div>
       </Toolbar>
     </AppBar>
   );

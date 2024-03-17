@@ -115,3 +115,15 @@
     }
   }
   
+@media only screen and (max-width: 600px) {
+    .foodBox{
+display: none !important;
+    }
+  }
+  
+  .HamBurger{
+    margin-left:9%
+  }
+  .NavToolBar{
+    width:100% !important
+  }
