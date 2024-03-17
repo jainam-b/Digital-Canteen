@@ -21,10 +21,14 @@ const NavBar = () => {
   const { isAuthenticated, user, logOut } = useContext(AuthContext);
 
   const handleNavigateSignUp = () => {
-    let path = isAuthenticated() ? `/logout` : `/signup`;
-    navigate(path);
+    if (isAuthenticated()) {
+      logOut(); // Call the logOut function if the user is authenticated
+    } else {
+      let path = `/signup`;
+      navigate(path);
+    }
   };
-
+  
   const handleNavigateCart = () => {
     let path = `/cart`;
     navigate(path);
@@ -38,7 +42,7 @@ const NavBar = () => {
     <AppBar
       position="static"
       className="navbar"
-      style={{ borderRadius: "18px" }}
+      style={{ borderRadius: "18px",cursor:"pointer" }}
       color="inherit"
     >
       <Toolbar style={{ justifyContent: "space-between" }}>
@@ -69,7 +73,7 @@ const NavBar = () => {
           </div>
         </div>
 
-        <div className="submit" onClick={handleNavigateSignUp}>
+        <div className="submit "  style={{}} onClick={handleNavigateSignUp}>
           {isAuthenticated() ? "Logout" : "Signup"}
         </div>
 
