@@ -101,66 +101,53 @@ const CartPage = () => {
 
 async function displayRazorpay() {
   const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
+    "https://checkout.razorpay.com/v1/checkout.js"
   );
 
   if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
+    alert("Razorpay SDK failed to load. Are you online?");
+    return;
   }
 
-  const result = await axios.post("http://localhost:3000/pay/orders");
-
-  if (!result) {
+  try {
+    const result = await axios.post("http://localhost:3000/pay/orders");
+    if (!result) {
       alert("Server error. Are you online?");
       return;
-  }
+    }
 
-  const { amount, id: order_id, currency } = result.data;
+    const { amount, id: order_id, currency } = result.data;
 
-  const options = {
-      key: "rzp_test_YMSg1NivuORLa3", // Enter the Key ID generated from the Dashboard
+    const options = {
+      key: "rzp_test_YMSg1NivuORLa3",
       amount: "1200",
       currency: currency,
       name: "Soumya Corp.",
       description: "Test Transaction",
-       
       order_id: order_id,
-      handler: async function (response) {
-          const data = {
-              orderCreationId: order_id,
-              razorpayPaymentId: response.razorpay_payment_id,
-              razorpayOrderId: response.razorpay_order_id,
-              razorpaySignature: response.razorpay_signature,
-              // Include success status here
-              success: true // Assuming Razorpay handler provides success status
-          };
-
-          const result = await axios.post("http://localhost:3000/pay/success", data);
-
-          alert(result.data.msg);
-
-          // Check if the payment was successful before placing the order
-          if (result.data.success) {
-              // Call handlePay to place the order
-              handlePay();
-          }
-      },
       prefill: {
-          name: "Canteen ",
-          email: "SoumyaDey@example.com",
-          contact: "9999999999",
+        name: "Canteen ",
+        email: "SoumyaDey@example.com",
+        contact: "9999999999",
       },
       notes: {
-          address: "Soumya Dey Corporate Office",
+        address: "Soumya Dey Corporate Office",
       },
       theme: {
-          color: "#61dafb",
+        color: "#61dafb",
       },
-  };
+      handler: async function (response) {
+        // You can directly call handlePay here
+        handlePay();
+      },
+    };
 
-  const paymentObject = new window.Razorpay(options);
-  paymentObject.open();
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  } catch (error) {
+    console.error("Error processing payment:", error);
+    // Handle the error appropriately, e.g., show an error message to the user
+  }
 }
 
 
