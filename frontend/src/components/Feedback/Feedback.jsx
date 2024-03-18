@@ -10,7 +10,7 @@ function Feedback() {
         <h3>Our Happy Client Says</h3>
         <div className='feedbackContent'>
           <FeedbackCrousel/>
-          <img src="feedbackimg.png"></img>
+          <img src="feedbackimg.png" className="feedbackImg"></img>
         </div>
         </div>
     </div>

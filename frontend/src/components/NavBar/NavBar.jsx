@@ -58,14 +58,10 @@ const NavBar = () => {
             <li onClick={()=>{window.location.href="/"}}>Shop</li>
           </ul>
         </div>
+ 
 
         <div className="search-box">
-          {/* <SearchIcon style={{ marginRight: "20px" }} />
-          <InputBase
-            placeholder="Search"
-            inputProps={{ "aria-label": "search" }}
-            style={{ marginRight: "20px" }}
-          /> */}
+
 
           <div className="cart" onClick={handleNavigateCart}>
             <span className="count">{cartItems.length}</span>
@@ -77,6 +73,7 @@ const NavBar = () => {
           {isAuthenticated() ? "Logout" : "Signup"}
         </div>
 
+ 
         <IconButton
           size="large"
           edge="start"
@@ -84,9 +81,19 @@ const NavBar = () => {
           aria-label="menu"
           onClick={toggleMenu}
           sx={{ display: { md: "none" } }}
+          className="HamBurger"
         >
           <MenuIcon />
         </IconButton>
+        
+
+        <div className="submit" onClick={handlenavigateSignUp}>
+          Signup
+        </div>
+        <div className="cart" onClick={handlenavigateCart}>
+            <span className="count">{cartItems.length}</span>
+            <ShoppingCartIcon />
+          </div>
       </Toolbar>
     </AppBar>
   );
