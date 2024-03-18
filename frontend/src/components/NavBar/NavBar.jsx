@@ -47,7 +47,7 @@ const NavBar = () => {
     >
       <Toolbar style={{ justifyContent: "space-between" }} className="NavToolBar">
         <Typography variant="h6" component="div">
-          <img src="foodlogo.png" alt="Logo" className="logo" />
+          <img src="foodlogo.png" alt="Logo" onClick={()=>{window.location.href="/"}}  className="logo" />
         </Typography>
 
         <div className={`menu ${showMenu ? "active" : ""}`}>
@@ -60,12 +60,12 @@ const NavBar = () => {
         </div>
 
         <div className="search-box">
-          <SearchIcon style={{ marginRight: "20px" }} />
+          {/* <SearchIcon style={{ marginRight: "20px" }} />
           <InputBase
             placeholder="Search"
             inputProps={{ "aria-label": "search" }}
             style={{ marginRight: "20px" }}
-          />
+          /> */}
 
           <div className="cart" onClick={handleNavigateCart}>
             <span className="count">{cartItems.length}</span>
