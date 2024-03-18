@@ -47,7 +47,7 @@ const NavBar = () => {
     >
       <Toolbar style={{ justifyContent: "space-between" }} className="NavToolBar">
         <Typography variant="h6" component="div">
-          <img src="foodlogo.png" alt="Logo" className="logo" />
+          <img src="foodlogo.png" alt="Logo" onClick={()=>{window.location.href="/"}}  className="logo" />
         </Typography>
 
         <div className={`menu ${showMenu ? "active" : ""}`}>
@@ -61,7 +61,7 @@ const NavBar = () => {
  
 
         <div className="search-box">
-          
+
 
           <div className="cart" onClick={handleNavigateCart}>
             <span className="count">{cartItems.length}</span>
