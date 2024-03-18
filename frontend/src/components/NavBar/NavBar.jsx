@@ -20,7 +20,7 @@ const NavBar = () => {
   const { cartItems } = useCart();
   const { isAuthenticated, user, logOut } = useContext(AuthContext);
 
-  const handleNavigateSignUp = () => {
+  const handlenavigateSignUp = () => {
     if (isAuthenticated()) {
       logOut(); // Call the logOut function if the user is authenticated
     } else {
@@ -29,7 +29,7 @@ const NavBar = () => {
     }
   };
   
-  const handleNavigateCart = () => {
+  const handlenavigateCart = () => {
     let path = `/cart`;
     navigate(path);
   };
@@ -63,13 +63,13 @@ const NavBar = () => {
         <div className="search-box">
 
 
-          <div className="cart" onClick={handleNavigateCart}>
+          <div className="cart" onClick={handlenavigateCart}>
             <span className="count">{cartItems.length}</span>
             <ShoppingCartIcon />
           </div>
         </div>
 
-        <div className="submit "  style={{}} onClick={handleNavigateSignUp}>
+        <div className="submit "  style={{}} onClick={handlenavigateSignUp}>
           {isAuthenticated() ? "Logout" : "Signup"}
         </div>
 
@@ -87,13 +87,7 @@ const NavBar = () => {
         </IconButton>
         
 
-        <div className="submit" onClick={handlenavigateSignUp}>
-          Signup
-        </div>
-        <div className="cart" onClick={handlenavigateCart}>
-            <span className="count">{cartItems.length}</span>
-            <ShoppingCartIcon />
-          </div>
+        
       </Toolbar>
     </AppBar>
   );
