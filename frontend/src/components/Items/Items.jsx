@@ -44,9 +44,9 @@ function Items() {
 
   return (
     <><NavBar></NavBar><div>
-      <Button variant="contained" className="Cart" style={{ marginLeft: '90%', marginTop: '1%' }} onClick={handlenavigateCart}>
+      {/* <Button variant="contained" className="Cart" style={{ marginLeft: '90%', marginTop: '1%' }} onClick={handlenavigateCart}>
         Show Cart
-      </Button>
+      </Button> */}
 
       <div className='Items'>
         <h3>Most Popular Items</h3>

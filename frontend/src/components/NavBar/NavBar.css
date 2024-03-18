@@ -105,25 +105,9 @@
     z-index: 1;
   }
   
-  @media only screen and (max-width: 768px) {
-    .menu ul {
-      display: none;
-    }
-  
-    .menu {
-      position: relative;
-    }
-  }
-  
-@media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     .foodBox{
 display: none !important;
     }
   }
-  
-  .HamBurger{
-    margin-left:9%
-  }
-  .NavToolBar{
-    width:100% !important
-  }
+
