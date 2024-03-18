@@ -14,6 +14,10 @@ const Login = () => {
     let path = `/`;
     navigate(path);
   };
+  const handlenavigateSignup = () => {
+    let path = `/signup`;
+    navigate(path);
+  };
 
   const handleLogin = async () => {
     try {
@@ -69,7 +73,7 @@ const Login = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" onClick={handleLogin} className='LoginBtn'>
+              <Button variant="contained" onClick={handleLogin}  style={{width:"100%"}} className='LoginBtn'>
                 Login
               </Button>
             </Grid>
@@ -78,7 +82,7 @@ const Login = () => {
         {error && <div className="error">{error}</div>} {/* Display error message */}
         <div className="forgotPassword">
           <Typography variant="body1">
-            Lost Password? <span>Click here</span>
+          Dont have account? <span onClick={handlenavigateSignup}>Sign up</span>
           </Typography>
         </div>
       </Container>

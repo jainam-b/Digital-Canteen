@@ -45,17 +45,17 @@ const NavBar = () => {
       style={{ borderRadius: "18px",cursor:"pointer" }}
       color="inherit"
     >
-      <Toolbar style={{ justifyContent: "space-between" }}>
+      <Toolbar style={{ justifyContent: "space-between" }} className="NavToolBar">
         <Typography variant="h6" component="div">
           <img src="foodlogo.png" alt="Logo" className="logo" />
         </Typography>
 
         <div className={`menu ${showMenu ? "active" : ""}`}>
           <ul>
-            <li>Home</li>
-            <li>Menu</li>
-            <li>Services</li>
-            <li>Shop</li>
+            <li onClick={()=>{window.location.href="/"}}>Home</li>
+            <li  onClick={()=>{window.location.href="/item"}}>Menu</li>
+            <li onClick={()=>{window.location.href="/"}}>Services</li>
+            <li onClick={()=>{window.location.href="/"}}>Shop</li>
           </ul>
         </div>
 

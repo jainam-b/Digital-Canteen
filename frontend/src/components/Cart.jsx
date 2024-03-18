@@ -28,11 +28,8 @@ const CartPage = () => {
   const [itemQuantities, setItemQuantities] = useState({});
   const { isAuthenticated } = useContext(AuthContext); // Access isAuthenticated from AuthContext
   const [showModal, setShowModal] = useState(!isAuthenticated); // Show modal initially if not authenticated
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false); // State to control success alert
   const navigate = useNavigate();
-  const handleLogin = () => {
-    let path = `/login`;
-    navigate(path);
-  }
 
   useEffect(() => {
     // Initialize itemQuantities when cartItems change
@@ -73,9 +70,6 @@ const CartPage = () => {
     // Check if user is authenticated
     if (!isAuthenticated()) {
       setShowModal(true); // Show modal if user is not authenticated
-      
-      // Redirect user to login page if not authenticated
-      // Add your logic to navigate to the login page here
       return;
     }
 
@@ -98,6 +92,14 @@ const CartPage = () => {
 
       // Clear the cart after successful order placement
       clearCart();
+
+      // Display success alert
+      setShowSuccessAlert(true);
+
+      // Redirect to order summary page after a delay
+      setTimeout(() => {
+        navigate('/order-summary');
+      }, 2000); // 2000 milliseconds delay
     } catch (error) {
       // Handle error response
       console.error("Error placing order:", error);
@@ -292,6 +294,13 @@ const CartPage = () => {
       <Modal open={showModal} onClose={closeModal}>
         <CloseModal onSuccess={closeModal} />
       </Modal>
+
+      {/* Success alert */}
+      {showSuccessAlert && (
+        <div className="alert alert-success" role="alert">
+          Order placed successfully!
+        </div>
+      )}
     </>
   );
 };
