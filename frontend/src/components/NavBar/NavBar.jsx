@@ -9,6 +9,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CloseIcon from "@mui/icons-material/Close";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
@@ -76,14 +77,14 @@ const NavBar = () => {
  
         <IconButton
           size="large"
-          edge="start"
+          edge="end"
           color="inherit"
           aria-label="menu"
           onClick={toggleMenu}
           sx={{ display: { md: "none" } }}
-          className="HamBurger"
+          className={`Hamburger ${showMenu ? "active" : ""}`}
         >
-          <MenuIcon />
+          {showMenu ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
         
 

@@ -8,10 +8,12 @@ import Subscribe from "../Subscribe/Subscribe";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 
+
 import "./Landing.css";
 
 function Landing() {
   return (
+    
     <div className="container">
       <NavBar />
 
@@ -23,6 +25,9 @@ function Landing() {
         <Feedback />
         <Subscribe />
         <Footer />
+        
+
+        
       </div>
     </div>
   );

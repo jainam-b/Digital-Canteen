@@ -12,6 +12,7 @@ import Signup from './components/Signup/Signup';
 import { UserProvider } from './components/Context/UserContext ';
 import Items from "./components/Items/Items";
 import Checkout from "./components/checkout/Checkout";
+import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);

@@ -111,14 +111,25 @@ body {
   }
 
   .menu {
-    position: relative;
+    position: absolute;
+    top:71px;
+    left:-42px;
+  }
+.menu.active ul {
+  border-radius:19px;
+box-shadow: -1px 0px 20px 3px;
+width:460px !important
   }
 }
 
 @media only screen and (max-width: 600px) {
   .foodBox{
-display: none !important;
+    display: none !important;
   }
 }
 
-
+/* Hamburger Animation */
+.Hamburger.active .MuiIconButton-label .MuiSvgIcon-root {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}

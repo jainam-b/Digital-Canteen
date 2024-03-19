@@ -43,7 +43,10 @@ function Items() {
   }, []);
 
   return (
-    <><NavBar></NavBar><div>
+    <div className='itemMenu'>
+    <NavBar></NavBar>
+    
+    <div >
       {/* <Button variant="contained" className="Cart" style={{ marginLeft: '90%', marginTop: '1%' }} onClick={handlenavigateCart}>
         Show Cart
       </Button> */}
@@ -76,7 +79,7 @@ function Items() {
         )}
       </div>
 
-    </div></>
+    </div></div>
   );
 }
 
