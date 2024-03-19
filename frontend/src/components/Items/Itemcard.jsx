@@ -22,10 +22,10 @@ export default function Itemcard({
   productId,
 }) {
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, updateCartItemQuantity , cartItems} = useCart();
   const [quantity, setQuantity] = useState(1); // State for quantity
   const [addedToCart, setAddedToCart] = useState(false); // State to track if item added to cart
-
+console.log(cartItems);
   const handleAddToCart = () => {
     addToCart({ productId, productName, price, quantity });
     setAddedToCart(true); // Set addedToCart to true
@@ -37,11 +37,13 @@ export default function Itemcard({
 
   const handleIncreaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1); // Increase quantity by 1
+    updateCartItemQuantity(productName, quantity + 1); // Update quantity in cart context
   };
 
   const handleDecreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1); // Decrease quantity by 1
+      updateCartItemQuantity(productName, quantity - 1); // Update quantity in cart context
     }
   };
 
@@ -78,8 +80,6 @@ export default function Itemcard({
                 Add to Cart
               </Button>
             )}
-             
-             
           </CardActions>
           <CardContent>{price}</CardContent>
         </div>
