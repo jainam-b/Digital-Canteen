@@ -9,10 +9,11 @@ import {
 import { useCart } from "../Context/CartContext";
 
 export default function OrderDetails2() {
-  const { orderedItems, orderId } = useCart(); // Change cartItems to orderedItems and add orderId
+  const { orderedItems } = useCart(); // Change cartItems to orderedItems
 
   // Calculate total amount
   const totalAmount = orderedItems.reduce((total, item) => total + parseFloat(item.price), 0);
+  const orderIds = Math.floor(Math.random() * 1000000) + 1;
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -58,7 +59,7 @@ export default function OrderDetails2() {
                       <p>Order ID:</p>
                     </MDBCol>
                     <MDBCol md="4" lg="3">
-                      <p>{orderId}</p>
+                      <p>{orderIds}</p>
                     </MDBCol>
                   </MDBRow>
                 </div>
