@@ -25,6 +25,17 @@ export default function OrderDetails2() {
                 <p className="lead fw-bold mb-5" style={{ color: "#f37a27" }}>
                   Purchase Receipt
                 </p>
+                 {/* Order ID */}
+                 <div className="mx-n5 px-5 py-4" style={{ backgroundColor: "#f2f2f2" }}>
+                  <MDBRow>
+                    <MDBCol md="8" lg="9">
+                      <p>Order ID:</p>
+                    </MDBCol>
+                    <MDBCol md="4" lg="3">
+                      <p>{orderIds}</p>
+                    </MDBCol>
+                  </MDBRow>
+                </div>
 
                 {/* Render order details */}
                 {orderedItems.map((item, index) => (
@@ -47,22 +58,12 @@ export default function OrderDetails2() {
                       <p>Total Amount:</p>
                     </MDBCol>
                     <MDBCol md="4" lg="3">
-                      <p>£{totalAmount.toFixed(2)}</p>
+                      <p>₹{totalAmount.toFixed(2)}</p>
                     </MDBCol>
                   </MDBRow>
                 </div>
 
-                {/* Order ID */}
-                <div className="mx-n5 px-5 py-4" style={{ backgroundColor: "#f2f2f2" }}>
-                  <MDBRow>
-                    <MDBCol md="8" lg="9">
-                      <p>Order ID:</p>
-                    </MDBCol>
-                    <MDBCol md="4" lg="3">
-                      <p>{orderIds}</p>
-                    </MDBCol>
-                  </MDBRow>
-                </div>
+               
 
                 {/* Remaining content */}
                 <p className="mt-4 pt-2 mb-0">
