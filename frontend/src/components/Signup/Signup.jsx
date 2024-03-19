@@ -18,6 +18,7 @@ const Signup = () => {
   const handleSignUp = () => {
     // Perform signup action
     signUp({ username: name, email, password });
+    handlenavigatelogin()
   };
 
   const handleLogin = () => {

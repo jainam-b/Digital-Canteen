@@ -7,6 +7,11 @@ const orderSchema = new mongoose.Schema({
     quantity: { type: Number, required: true } // Quantity of the menu item
   }],
   totalPrice: { type: Number, required: true }, // Total price of the order
+  status: {
+    type: String,
+    enum: ["pending", "preparing", "ready", "completed"],
+    default: "pending",
+  },
   createdAt: { type: Date, default: Date.now } // Timestamp of when the order was created
 });
 

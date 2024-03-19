@@ -12,6 +12,7 @@ import Signup from './components/Signup/Signup';
 import { UserProvider } from './components/Context/UserContext ';
 import Items from "./components/Items/Items";
 import Checkout from "./components/checkout/Checkout";
+import OrderSummary from "./components/OrderSummary/OrderSummary";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/order-summary" element={<OrderSummary />} />
               </Routes>
             </BrowserRouter>
           </UserProvider>

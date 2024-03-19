@@ -15,15 +15,15 @@ import { Remove, Add } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import axios from "axios"; // Import axios for making HTTP requests
-import Payment from "./Payments";
 import NavBar from "./NavBar/NavBar";
 import { AuthContext } from "./Context/AuthContext"; // Import AuthContext
 import { useNavigate } from "react-router-dom";
 import CloseModal from './LoginModal'; // Import the CloseModal component as default
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, clearCart, updateCartItemQuantity } =
+  const { cartItems, removeFromCart, clearCart, updateCartItemQuantity, orderedItems, setOrderedItems } =
     useCart();
+  console.log(orderedItems);
   const [totalPrice, setTotalPrice] = useState(0);
   const [itemQuantities, setItemQuantities] = useState({});
   const { isAuthenticated } = useContext(AuthContext); // Access isAuthenticated from AuthContext
@@ -91,6 +91,7 @@ const CartPage = () => {
       console.log("Order placed:", response.data);
 
       // Clear the cart after successful order placement
+      setOrderedItems([...orderedItems, ...cartItems]); // Move cart items to ordered items
       clearCart();
 
       // Display success alert
