@@ -5,19 +5,22 @@ import {
   Button,
   Grid,
   Typography,
-  Modal,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 import { AuthContext } from "./Context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function CloseModal() {
   const { logIn, setAuthenticated, authenticated } = useContext(AuthContext);
-  console.log(authenticated);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(true); // State variable to control modal open/close
 
   useEffect(() => {
     const isUserLoggedIn = localStorage.getItem("isUserLoggedIn");
@@ -26,17 +29,16 @@ export default function CloseModal() {
     } else {
       localStorage.removeItem("isUserLoggedIn");
     }
-    setIsModalOpen(!authenticated); // Close the modal if user is authenticated
   }, [authenticated]);
-  
 
   const handlenavigateHomepage = () => {
     let path = `/cart`;
     navigate(path);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false); // Close the modal
+  const handleClose = () => {
+    // Close the dialog
+    setAuthenticated(true); // Assume the user is authenticated to close the dialog
   };
 
   const handleLogin = async () => {
@@ -46,11 +48,9 @@ export default function CloseModal() {
       console.log(response); // Check the response data structure
 
       if (response && response.token) {
-        // Login successful, store token in local storage
         localStorage.setItem("token", response.token);
         console.log("Login successful", response);
         handlenavigateHomepage();
-        handleCloseModal(); // Close the modal after successful login
         setAuthenticated(true);
       } else {
         console.error("Login failed:", response && response.msg);
@@ -63,70 +63,68 @@ export default function CloseModal() {
   };
 
   return (
-    <Modal 
-    open={!authenticated}
-      onClose={handleCloseModal}
-      style={{
-        backdropFilter: "none",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        transition: "none", // Remove transition effect
-      }}
+    <Dialog
+      open={!authenticated}
+      onClose={handleClose}
+      maxWidth="sm"
+      fullWidth
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <Container maxWidth="sm" className="loginContainer">
-          <Typography variant="h4" align="center" gutterBottom>
-            Login
-          </Typography>
-          <form>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Email"
-                  variant="outlined"
-                  placeholder="Email id"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  label="Password"
-                  variant="outlined"
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  onClick={handleLogin}
-                  className="LoginBtn"
-                >
-                  Login
-                </Button>
-              </Grid>
+      <DialogTitle>
+        <Typography variant="h4" align="center">
+          Login
+        </Typography>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          style={{ position: 'absolute', right: 8, top: 8 }}
+        >
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+      <DialogContent dividers>
+        <form>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email"
+                variant="outlined"
+                placeholder="Email id"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Grid>
-          </form>
-          {error && <div className="error">{error}</div>}{" "}
-          {/* Display error message */}
-          <div className="forgotPassword">
-            <Typography variant="body1">
-              Lost Password? <span>Click here</span>
-            </Typography>
-          </div>
-        </Container>
-      </div>
-    </Modal>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Password"
+                variant="outlined"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                onClick={handleLogin}
+                fullWidth
+                size="large"
+                style={{ marginTop: '1rem' }}
+              >
+                Login
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+        {error && <div className="error">{error}</div>}
+        <div className="forgotPassword" style={{ marginTop: 10 }}>
+          <Typography variant="body1">
+            Lost Password? <span>Click here</span>
+          </Typography>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }
