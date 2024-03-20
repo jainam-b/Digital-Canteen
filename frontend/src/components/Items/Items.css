@@ -53,4 +53,9 @@
       align-items: flex-start; 
     }
   }
+  .itemMenu{
+    margin-top:10px;
+    margin-left:7%;
+    margin-right:7%;
+  }
   

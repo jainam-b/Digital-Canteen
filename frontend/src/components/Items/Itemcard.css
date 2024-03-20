@@ -1,51 +1,100 @@
 .prodCard {
-    width: calc(50% - 20px); 
-    max-width: 275px; 
-    border-radius: 20px !important;
-    margin-bottom: 20px; 
-  }
-  
-  .outerCard {
- 
-    padding: 0 10px; 
-  }
-  
-  .prodimage {
-    width: 100%; 
-    height: auto; 
-  }
-  
-  .prodIntro, .CartItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .prodIntro>span>svg {
-    font-size: 16px; 
-  }
-  
-  .Cart {
-    background-color: #f48e28 !important;
-    border-radius: 20px !important;
-    font-size: 14px; 
-    padding: 8px 16px; 
-  }
-  
-  .CartItem {
-    padding: 6px !important;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .prodCard {
-      width: calc(50% - 20px); 
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .prodCard {
-      width: calc(100% - 20px); 
-    }
+  width: calc(60% - 20px); /* Increase width */
+  max-width: 350px; 
+  border-radius: 20px !important;
+  margin-bottom: 20px;
 }
+
+.outerCard {
+  padding: 0 10px;
+}
+
+.prodimage {
+  width: 100%;
+  height: auto;
+}
+
+.prodDetails {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.CardActions {
+  display: flex;
+  justify-content: center;
+}
+
+.Cart {
+  background-color: #f48e28 !important;
+  border-radius: 20px !important;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .prodCard {
+    /* width: calc(100% - 20px); */
+    display: flex;
+    flex-direction: row;
+    max-width:600px !important;
+    width:550px !important
   }
-  
+
+  .prodimage {
+    width: 55%;
+    height: 50%;
+  }
+
+  .prodDetails {
+    flex: 1;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .prodDetails h5,
+  .prodDetails p {
+    margin: 0;
+  }
+
+  .ProdSection1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .addtoCard {
+    width: auto; /* Adjust width as needed */
+  }
+
+  /* Update the .Cart class for mobile view */
+.Cart {
+  background-color: #f48e28 !important;
+  border-radius: 20px !important;
+  font-size: 14px !important; /* Decrease font size for mobile */
+  padding: 4px 8px; /* Decrease padding for mobile */
+}
+
+/* Update the .prodDetails class for mobile view */
+.prodDetails {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to start for mobile */
+}
+
+/* Add new class for mobile view to display image, name, and price side by side */
+.MobileProdInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.ProdConCard{
+  width:60% !important;
+}
+.prodName{
+  font-size:14px !important;
+}
+}
+

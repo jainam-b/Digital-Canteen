@@ -47,7 +47,10 @@ console.log(cartItems);
   }, []);
 
   return (
-    <><NavBar></NavBar><div>
+    <div className='itemMenu'>
+    <NavBar></NavBar>
+    
+    <div >
       {/* <Button variant="contained" className="Cart" style={{ marginLeft: '90%', marginTop: '1%' }} onClick={handlenavigateCart}>
         Show Cart
       </Button> */}
@@ -80,7 +83,7 @@ console.log(cartItems);
         )}
       </div>
 
-    </div></>
+    </div></div>
   );
 }
 

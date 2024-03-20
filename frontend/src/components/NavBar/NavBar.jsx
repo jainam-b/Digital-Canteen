@@ -4,10 +4,10 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  InputBase,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CloseIcon from "@mui/icons-material/Close";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
@@ -111,11 +111,12 @@ const NavBar = () => {
             aria-label="menu"
             onClick={toggleMenu}
             sx={{ display: { md: "none" } }}
-            className="HamBurger"
+            className={`HamBurger ${showMenu ? "active" : ""}`}
           >
-            <MenuIcon />
+            {showMenu ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         </div>
+
       </Toolbar>
     </AppBar>
   );
