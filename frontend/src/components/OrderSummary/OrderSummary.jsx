@@ -12,7 +12,7 @@ export default function OrderDetails2() {
   const { orderedItems } = useCart(); // Change cartItems to orderedItems
 
   // Calculate total amount
-  const totalAmount = orderedItems.reduce((total, item) => total + parseFloat(item.price), 0);
+  const totalAmount = orderedItems.reduce((total, item) => total + (parseFloat(item.price) * item.quantity), 0);
   const orderIds = Math.floor(Math.random() * 1000000) + 1;
 
   return (
@@ -44,9 +44,12 @@ export default function OrderDetails2() {
                       <MDBCol md="8" lg="9">
                         <p>{item.productName}</p>
                       </MDBCol>
-                      <MDBCol md="4" lg="3">
-                        <p>£{item.price}</p>
+                      <MDBCol md="2" lg="2">
+                        <p>Qty: {item.quantity}</p>
                       </MDBCol>
+                      <MDBRow md="2" lg="1">
+                        <p>₹{(parseFloat(item.price) * item.quantity).toFixed(2)}</p>
+                      </MDBRow>
                     </MDBRow>
                   </div>
                 ))}
@@ -62,8 +65,6 @@ export default function OrderDetails2() {
                     </MDBCol>
                   </MDBRow>
                 </div>
-
-               
 
                 {/* Remaining content */}
                 <p className="mt-4 pt-2 mb-0">
