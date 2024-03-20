@@ -51,6 +51,7 @@
     .productMenu {
       justify-content: center; 
       align-items: flex-start; 
+      max-width: 109%;
     }
   }
   .itemMenu{
