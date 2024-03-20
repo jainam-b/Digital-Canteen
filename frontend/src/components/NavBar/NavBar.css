@@ -1,5 +1,3 @@
-/* NavBar.css */
-
 .navbar {
   background-color: #fff;
 }
@@ -54,15 +52,6 @@
   cursor: pointer;
 }
 
-.carti {
-  width: 35px !important;
-  margin-left: 10px;
-}
-
-body {
-  background: black;
-}
-
 .cart {
   position: relative;
   display: block;
@@ -109,24 +98,30 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .foodBox{
+    display:none !important;
+  }
+  
   .menu ul {
     display: none;
   }
 
+ 
   .menu {
     position: absolute;
     top:71px;
-    left:-42px;
+    right: 10px; /* Shift to the right side */
+    margin-top: 10% !important;
+    margin-right: 113% !important;
   }
-.menu.active ul {
-  border-radius:19px;
-box-shadow: -1px 0px 20px 3px;
-width:460px !important
+
+  .menu.active ul {
+    border-radius:19px;
+    box-shadow: -1px 0px 20px 3px;
+    width:460px !important;
   }
 }
-
-
-
 
 .signup-container {
   display: flex;
@@ -137,6 +132,7 @@ width:460px !important
 .submit {
   margin-top: 10px;
 }
+
 
 @media only screen and (min-width: 769px) {
   .signup-container {
@@ -149,36 +145,18 @@ width:460px !important
     margin-left: 10px;
   }
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width: 600px) {
-  .foodBox{
-    display: none !important;
-  }
+  
 }
 
 /* Hamburger Animation */
-.Hamburger.active .MuiIconButton-label .MuiSvgIcon-root {
+.HamBurger.active .MuiIconButton-label .MuiSvgIcon-root {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
+}
+
+/* Close icon animation */
+.HamBurger .MuiSvgIcon-root {
+  transition: transform 0.3s ease;
+  margin-top: -232%;
+  margin-left: 814%;
+}

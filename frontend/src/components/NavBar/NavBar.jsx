@@ -4,7 +4,6 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  InputBase,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -112,9 +111,9 @@ const NavBar = () => {
             aria-label="menu"
             onClick={toggleMenu}
             sx={{ display: { md: "none" } }}
-            className="HamBurger"
+            className={`HamBurger ${showMenu ? "active" : ""}`}
           >
-            <MenuIcon />
+            {showMenu ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         </div>
 
