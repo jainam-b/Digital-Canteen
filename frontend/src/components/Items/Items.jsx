@@ -33,6 +33,7 @@ console.log(cartItems);
       try {
         const response = await axios.get('http://localhost:3000/order/menus');
         setProducts(response.data);
+        console.log("Databse",response.data);
         setLoading(false); 
         setShowAlert(true); 
         setTimeout(() => {

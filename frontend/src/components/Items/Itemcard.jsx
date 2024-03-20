@@ -1,9 +1,5 @@
- 
-import React from "react";
- 
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
- 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -31,12 +27,8 @@ export default function Itemcard({
   const [addedToCart, setAddedToCart] = useState(false); // State to track if item added to cart
 console.log(cartItems);
   const handleAddToCart = () => {
- 
-    addToCart({ productId, productName, price });
- 
     addToCart({ productId, productName, price, quantity });
     setAddedToCart(true); // Set addedToCart to true
- 
   };
 
   const handleGoToCart = () => {
@@ -56,15 +48,16 @@ console.log(cartItems);
   };
 
   return (
-    <Card sx={{ minWidth: 275 }} className="prodCard">
-      <CardContent className="ProdConCard">
-        <div className="MobileProdInfo">
+    <div className="outerCard">
+      <Card sx={{ minWidth: 275 }} className="prodCard">
+        <CardContent>
           <img src={image} className="prodimage" alt={productName}></img>
-          <div className="prodDetails">
-            <Typography variant="h6" component="div" className="prodName">{productName}</Typography>
-            <Typography variant="body2" color="text.secondary">{price}</Typography>
+          <div className="prodIntro">
+            <h5>{productName}</h5>
+            <span>
+              <StarIcon /> {rating}
+            </span>
           </div>
- 
         </CardContent>
         <div className="CartItem">
           <CardActions>
@@ -89,12 +82,8 @@ console.log(cartItems);
             )}
           </CardActions>
           <CardContent>{price}</CardContent>
- 
         </div>
-      </CardContent>
-      <CardActions>
-        <Button variant="contained" onClick={handleAddToCart} className="Cart">Add to Cart</Button>
-      </CardActions>
-    </Card>
+      </Card>
+    </div>
   );
 }
