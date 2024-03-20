@@ -23,7 +23,7 @@ import CloseModal from './LoginModal'; // Import the CloseModal component as def
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity, orderedItems, setOrderedItems } =
     useCart();
-  console.log(orderedItems);
+  console.log(cartItems);
   const [totalPrice, setTotalPrice] = useState(0);
   const [itemQuantities, setItemQuantities] = useState({});
   const { isAuthenticated } = useContext(AuthContext); // Access isAuthenticated from AuthContext
@@ -31,7 +31,9 @@ const CartPage = () => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(false); // State to control success alert
   const navigate = useNavigate();
 
-  useEffect(() => {
+
+
+ useEffect(() => {
     // Initialize itemQuantities when cartItems change
     const initialQuantities = {};
     cartItems.forEach((item) => {
@@ -39,6 +41,19 @@ const CartPage = () => {
     });
     setItemQuantities(initialQuantities);
   }, [cartItems]);
+
+  const handleQuantityChange = (itemName, newQuantity) => {
+    // Ensure the new quantity is at least 1
+    newQuantity = Math.max(newQuantity, 1);
+    // Update itemQuantities state
+    setItemQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemName]: newQuantity,
+    }));
+    // Update cart item quantity
+    updateCartItemQuantity(itemName, newQuantity);
+  };
+
 
   useEffect(() => {
     // Calculate total price when cart items or item quantities change
@@ -54,17 +69,17 @@ const CartPage = () => {
     // Navigate back to the menu item page after clearing the cart
   };
 
-  const handleQuantityChange = (itemName, newQuantity) => {
-    // Ensure the new quantity is at least 1
-    newQuantity = Math.max(newQuantity, 1);
-    // Update itemQuantities state
-    setItemQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [itemName]: newQuantity,
-    }));
-    // Update cart item quantity
-    updateCartItemQuantity(itemName, newQuantity);
-  };
+  // const handleQuantityChange = (itemName, newQuantity) => {
+  //   // Ensure the new quantity is at least 1
+  //   newQuantity = Math.max(newQuantity, 1);
+  //   // Update itemQuantities state
+  //   setItemQuantities((prevQuantities) => ({
+  //     ...prevQuantities,
+  //     [itemName]: newQuantity,
+  //   }));
+  //   // Update cart item quantity
+  //   updateCartItemQuantity(itemName, newQuantity);
+  // };
 
   const handlePay = async () => {
     // Check if user is authenticated
@@ -184,12 +199,12 @@ const CartPage = () => {
   }, []);
 
   return (
-    <>
-      <NavBar></NavBar>
+<>
+      <NavBar />
       <Container maxWidth="md" className="order-payment-container">
-        <Typography variant="h4" align="center" gutterBottom></Typography>
+        {/* Other components */}
         <Grid container spacing={2}>
-          {/* Section 1: Cart Items */}
+          {/* Section for displaying cart items */}
           <Grid item xs={12}>
             <Typography variant="h6" gutterBottom>
               Cart Items
@@ -199,50 +214,28 @@ const CartPage = () => {
                 <CardMedia
                   component="img"
                   sx={{ width: 150, objectFit: "cover" }}
-                  image={"./sandwich.png"}
+                  image={"./sandwich.png"} // Replace with the actual image source
                   alt={item.productName}
                 />
                 <CardContent sx={{ flex: "1 0 auto" }}>
                   <Typography variant="h6">{item.productName}</Typography>
-                  <Typography variant="body1">
-                    Price: ₹{item.price}
-                  </Typography>
+                  <Typography variant="body1">Price: ₹{item.price}</Typography>
                 </CardContent>
-                <CardActions
-                  sx={{
-                    justifyContent: "flex-end",
-                    alignItems: "center",
-                  }}
-                >
+                <CardActions sx={{ justifyContent: "flex-end", alignItems: "center" }}>
                   <IconButton
-                    onClick={() =>
-                      handleQuantityChange(
-                        item.productName,
-                        itemQuantities[item.productName] - 1
-                      )
-                    }
+                    onClick={() => handleQuantityChange(item.productName, itemQuantities[item.productName] - 1)}
                     size="small"
                   >
                     <Remove />
                   </IconButton>
-                  <Typography variant="body1">
-                    {itemQuantities[item.productName]}
-                  </Typography>
+                  <Typography variant="body1">{itemQuantities[item.productName]}</Typography>
                   <IconButton
-                    onClick={() =>
-                      handleQuantityChange(
-                        item.productName,
-                        itemQuantities[item.productName] + 1
-                      )
-                    }
+                    onClick={() => handleQuantityChange(item.productName, itemQuantities[item.productName] + 1)}
                     size="small"
                   >
                     <Add />
                   </IconButton>
-                  <IconButton
-                    onClick={() => removeFromCart(item.productName)}
-                    size="small"
-                  >
+                  <IconButton onClick={() => removeFromCart(item.productName)} size="small">
                     Remove
                   </IconButton>
                 </CardActions>

@@ -28,6 +28,7 @@ export const CartProvider = ({ children }) => {
       setOrderId(storedOrderId);
     }
   }, []); // Empty dependency array ensures the effect runs only once on mount
+  
 
   const saveCartItemsToStorage = (items) => {
     // Save cart items to localStorage
@@ -94,16 +95,17 @@ export const CartProvider = ({ children }) => {
 
   const updateCartItemQuantity = (itemName, newQuantity) => {
     // Find the item in the cartItems array and update its quantity
-    const updatedCartItems = cartItems.map(item => {
+    const updatedCartItems = cartItems.map((item) => {
       if (item.productName === itemName) {
         return { ...item, quantity: newQuantity };
       }
       return item;
     });
-
+  
     setCartItems(updatedCartItems);
     saveCartItemsToStorage(updatedCartItems); // Save updated cart items to local storage
   };
+  
 
   return (
     <CartContext.Provider value={{ cartItems, orderedItems, orderId, setOrderedItems, addToCart, placeOrder, removeFromCart, clearCart, updateCartItemQuantity }}>

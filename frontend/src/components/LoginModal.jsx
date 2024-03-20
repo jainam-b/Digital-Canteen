@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Container,
   TextField,
@@ -11,13 +11,24 @@ import { AuthContext } from "./Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function CloseModal() {
-  const { logIn } = useContext(AuthContext);
+  const { logIn, setAuthenticated, authenticated } = useContext(AuthContext);
+  console.log(authenticated);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(true); // State variable to control modal open/close
+
+  useEffect(() => {
+    const isUserLoggedIn = localStorage.getItem("isUserLoggedIn");
+    if (authenticated) {
+      localStorage.setItem("isUserLoggedIn", "true");
+    } else {
+      localStorage.removeItem("isUserLoggedIn");
+    }
+    setIsModalOpen(!authenticated); // Close the modal if user is authenticated
+  }, [authenticated]);
+  
 
   const handlenavigateHomepage = () => {
     let path = `/cart`;
@@ -40,6 +51,7 @@ export default function CloseModal() {
         console.log("Login successful", response);
         handlenavigateHomepage();
         handleCloseModal(); // Close the modal after successful login
+        setAuthenticated(true);
       } else {
         console.error("Login failed:", response && response.msg);
         setError("Invalid email or password"); // Set error message
@@ -51,10 +63,14 @@ export default function CloseModal() {
   };
 
   return (
-    <Modal
-      open={isModalOpen && isAuthenticated}
+    <Modal 
+    open={!authenticated}
       onClose={handleCloseModal}
-      style={{ backdropFilter: "none", backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+      style={{
+        backdropFilter: "none",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        transition: "none", // Remove transition effect
+      }}
     >
       <div
         style={{

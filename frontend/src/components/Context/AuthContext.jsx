@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [showAlert, setShowAlert] = useState(false); // State variable to control alert visibility
   const [alertMessage, setAlertMessage] = useState(''); // State variable to store alert message
-
+  const [authenticated, setAuthenticated] = useState(false); 
   // Function to sign up
   const signUp = async (userData) => {
     console.log(userData);
@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', response.data.token);
       setShowAlert(true); // Show alert on successful login
       setAlertMessage('Login successful');
+      setAuthenticated(true);
       return response.data; // Return response data
     } catch (error) {
       // Throw the error
@@ -96,7 +97,9 @@ export const AuthProvider = ({ children }) => {
     signUp,
     logIn,
     logOut,
-    isAuthenticated
+    isAuthenticated,
+    setAuthenticated,
+    authenticated
   };
 
   // Return provider with value

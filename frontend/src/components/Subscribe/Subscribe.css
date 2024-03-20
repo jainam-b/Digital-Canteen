@@ -46,7 +46,9 @@
   .SubscribeInput > button {
     border-radius: 10px;
   }
-  
+  .MuiModal-root {
+    transition: none !important;
+  }
   @media only screen and (max-width: 768px) {
     .SubscribeBBox {
       width: 90%; /* Adjust width for smaller screens */

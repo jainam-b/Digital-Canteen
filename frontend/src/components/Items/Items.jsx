@@ -7,12 +7,16 @@ import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress'; // Import CircularProgress for the loader
 import { useNavigate } from "react-router-dom"; 
 import NavBar from '../NavBar/NavBar';
+import { useCart } from "../Context/CartContext";
 
 
 function Items() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // State variable to track loading status
   const [showAlert, setShowAlert] = useState(false); // State variable to control alert visibility
+  const { cartItems, removeFromCart, clearCart, updateCartItemQuantity, orderedItems, setOrderedItems } =
+  useCart();
+console.log(cartItems);
   const navigate = useNavigate(); 
   const routeChange = () => { 
     let path = `/menu-items`; 
