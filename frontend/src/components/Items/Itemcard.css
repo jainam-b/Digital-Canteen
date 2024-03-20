@@ -6,7 +6,9 @@
 }
 
 .outerCard {
-  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .prodimage {
@@ -32,68 +34,78 @@
   padding: 8px 16px;
 }
 
+
+
+
 @media only screen and (max-width: 768px) {
   .prodCard {
-    /* width: calc(100% - 20px); */
     display: flex;
     flex-direction: row;
-    max-width:600px !important;
-    width:550px !important
+    /* max-width: 600px !important;
+    width: 550px !important; */
+    justify-content: center;
+    align-items: center;
+    height: 115px;
+    margin:10px;
+    width: 350px !important;
   }
 
   .prodimage {
-    width: 55%;
-    height: 50%;
+    width: 47%;
+    padding: 5px;
+    height:72px
   }
 
   .prodDetails {
     flex: 1;
     padding: 10px;
-    font-size: 15px;
+    font-size: 12px; /* Decrease font size */
   }
 
-  .prodDetails h5,
+  .prodDetails h5 {
+    font-size: 16px; /* Adjust heading font size */
+    margin-bottom: 8px; /* Add some spacing */
+  }
+
   .prodDetails p {
-    margin: 0;
+    font-size: 14px; /* Adjust paragraph font size */
+    margin-bottom: 8px; /* Add some spacing */
   }
 
-  .ProdSection1 {
+  .CardActions {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end; /* Align buttons to the right */
   }
 
-  .addtoCard {
-    width: auto; /* Adjust width as needed */
+  .Cart {
+    background-color: #f48e28 !important;
+    border-radius: 10px !important; /* Decrease button border radius */
+    font-size: 10px !important; /* Decrease button font size */
+    padding: 4px 8px; /* Decrease button padding */
   }
+  .prodIntro{
+    display: flex;
+    justify-content: space-between;
+    width: 78%;
+    align-items:center
+  }
+  .prodIntro>div{
+    width:50%
+  }
+  .CartItem{
+    width: 38%;
 
-  /* Update the .Cart class for mobile view */
-.Cart {
-  background-color: #f48e28 !important;
-  border-radius: 20px !important;
-  font-size: 14px !important; /* Decrease font size for mobile */
-  padding: 4px 8px; /* Decrease padding for mobile */
-}
+  }
+.prodCon{
+  width:58%;
+  padding:0px !important;
 
-/* Update the .prodDetails class for mobile view */
-.prodDetails {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align items to start for mobile */
-}
-
-/* Add new class for mobile view to display image, name, and price side by side */
-.MobileProdInfo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-.ProdConCard{
-  width:60% !important;
 }
 .prodName{
-  font-size:14px !important;
+  font-size:13px !important;
+  font-weight:700;
+  margin-bottom:0px !important;
+
 }
+
 }

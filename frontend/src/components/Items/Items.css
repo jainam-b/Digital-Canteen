@@ -6,7 +6,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 100%; 
+    width: 90%; 
+    align-items:center;
+    margin-top:10px;
   }
   
   .Items {
@@ -15,6 +17,8 @@
     flex-direction: column;
     margin-top: 5%;
     padding: 0 20px; 
+    width:100%;
+    justify-content:center;
   }
   
   .moreProduct {
@@ -51,7 +55,7 @@
     .productMenu {
       justify-content: center; 
       align-items: flex-start; 
-      max-width: 109%;
+      max-width: 100%;
     }
   }
   .itemMenu{
