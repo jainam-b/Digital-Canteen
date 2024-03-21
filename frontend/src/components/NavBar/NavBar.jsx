@@ -50,7 +50,7 @@ const NavBar = () => {
       >
         <Typography variant="h6" component="div">
           <img
-            src="foodlogo.png"
+            src="finallogo.jpg"
             alt="Logo"
             onClick={() => {
               window.location.href = "/";

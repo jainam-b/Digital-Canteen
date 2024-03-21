@@ -7,6 +7,9 @@
 
 .HedingVal {
   font-size: 3rem;
+  /* margin-top: -39%;
+  font-size: 95px; */
+  
 }
 
 .HeadDiffColor {
@@ -35,6 +38,26 @@
   flex: 1 1 45%;
   margin-bottom: 20px;
 }
+.OrderNow{
+  margin-top:2%;
+}
+
+
+.text1{
+
+  font-size: 180%;
+  margin-top:-25%
+}
+
+.text2{
+  font-size:141%;
+}
+
+
+
+
+
+
 
 @media (max-width: 600px) {
   .foodBox > * {
@@ -48,4 +71,14 @@
   .sectionOne{
     width:100%
   }
+  .text1 {
+    font-size: 118%;
+    margin-top: -3%;
+}
+
+.text2 {
+  margin-left: 1%;
+  font-size: 111%;
+}
+
 }
