@@ -64,10 +64,11 @@ export default function CloseModal() {
 
   return (
     <Dialog
-      open={!authenticated}
+      open={ !authenticated}
       onClose={handleClose}
       maxWidth="sm"
       fullWidth
+      BackdropProps={{ style: { backdropFilter: 'none' } }} // Disable backdrop blur
     >
       <DialogTitle>
         <Typography variant="h4" align="center">
@@ -111,7 +112,8 @@ export default function CloseModal() {
                 onClick={handleLogin}
                 fullWidth
                 size="large"
-                style={{ marginTop: '1rem' }}
+                style={{ marginTop: '1rem' , backgroundColor: '#F48E28'  }} 
+
               >
                 Login
               </Button>
