@@ -21,10 +21,10 @@ function FirstScreen() {
           Experience the convenience of ordering delicious food online.
           </div>
           <div className='OrderNow'>
-            <Button variant="contained" className='OrderButton'>Order Now</Button>
+            <Button variant="contained" className='OrderButton' onClick={()=>{window.location.href="/item"}}>Order Now</Button>
           </div>
         </Box>
-        <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionTwo">
+        <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionTwo"onClick={()=>{window.location.href="/item"}}>
           <div className='foodBox'>
             <FSCard className='img1' cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
             <FSCard className='img2' cardImage={'junkfood.png'} ImageHead={'Food Combo'} Desp={'Mushroom Sauce '} Price={'$9.15'} />

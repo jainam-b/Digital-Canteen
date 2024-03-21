@@ -12,6 +12,8 @@ import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { useCart } from "../Context/CartContext";
+import { useMediaQuery } from 'react-responsive';
+import MobileNavBar from '../NavBar/MobileNav'; // Import your MobileNavBar component
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -37,88 +39,97 @@ const NavBar = () => {
     setShowMenu(!showMenu);
   };
 
+  // Use media query to check if the screen size is mobile
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   return (
-    <AppBar
-      position="static"
-      className="navbar"
-      style={{ borderRadius: "18px", cursor: "pointer" }}
-      color="inherit"
-    >
-      <Toolbar
-        style={{ justifyContent: "space-between" }}
-        className="NavToolBar"
-      >
-        <Typography variant="h6" component="div">
-          <img
-            src="finallogo.jpg"
-            alt="Logo"
-            onClick={() => {
-              window.location.href = "/";
-            }}
-            className="logo"
-          />
-        </Typography>
-
-        <div className={`menu ${showMenu ? "active" : ""}`}>
-          <ul>
-            <li
-              onClick={() => {
-                window.location.href = "/";
-              }}
-            >
-              Home
-            </li>
-            <li
-              onClick={() => {
-                window.location.href = "/item";
-              }}
-            >
-              Menu
-            </li>
-            <li
-              onClick={() => {
-                window.location.href = "/";
-              }}
-            >
-              Services
-            </li>
-            <li
-              onClick={() => {
-                window.location.href = "/";
-              }}
-            >
-              Shop
-            </li>
-          </ul>
-        </div>
-
-        <div className="search-box">
-          <div className="cart" onClick={handlenavigateCart}>
-            <span className="count">{cartItems.length}</span>
-            <ShoppingCartIcon />
-          </div>
-        </div>
-
-        <div className="signup-container">
-          <div className="submit" onClick={handlenavigateSignUp}>
-            {isAuthenticated() ? "Logout" : "Signup"}
-          </div>
-
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleMenu}
-            sx={{ display: { md: "none" } }}
-            className={`HamBurger ${showMenu ? "active" : ""}`}
+    <>
+      {isMobile ? ( // Render MobileNavBar if the screen size is mobile
+        <MobileNavBar />
+      ) : ( // Render regular NavBar for desktop view
+        <AppBar
+          position="static"
+          className="navbar"
+          style={{ borderRadius: "18px", cursor: "pointer" }}
+          color="inherit"
+        >
+          <Toolbar
+            style={{ justifyContent: "space-between" }}
+            className="NavToolBar"
           >
-            {showMenu ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
-        </div>
+            <Typography variant="h6" component="div">
+              <img
+                src="finallogo.jpg"
+                alt="Logo"
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+                className="logo"
+              />  
+            </Typography>
 
-      </Toolbar>
-    </AppBar>
+            <div className={`menu ${showMenu ? "active" : ""}`}>
+              <ul>
+                <li
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
+                >
+                  Home
+                </li>
+                <li
+                  onClick={() => {
+                    window.location.href = "/item";
+                  }}
+                >
+                  Menu
+                </li>
+                <li
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
+                >
+                  Services
+                </li>
+                <li
+                  onClick={() => {
+                    window.location.href = "/";
+                  }}
+                >
+                  Shop
+                </li>
+              </ul>
+            </div>
+
+            <div className="search-box">
+              <div className="cart" onClick={handlenavigateCart}>
+                <span className="count">{cartItems.length}</span>
+                <ShoppingCartIcon />
+              </div>
+            </div>
+
+            <div className="signup-container">
+              <div className="submit" onClick={handlenavigateSignUp}>
+                {isAuthenticated() ? "Logout" : "Signup"}
+              </div>
+
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleMenu}
+                sx={{ display: { md: "none" } }}
+                className={`HamBurger ${showMenu ? "active" : ""}`}
+              >
+                {showMenu ? <CloseIcon /> : <MenuIcon />}
+              </IconButton>
+            </div>
+
+          </Toolbar>
+        </AppBar>
+      )}
+    </>
   );
 };
 
