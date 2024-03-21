@@ -1,0 +1,11 @@
+.cart-items-container {
+    width: 65%;
+    background: #fff;
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3% 5%;
+    display: flex;
+    box-shadow: 0 3px 8px #0000003d;
+    margin-top: "4%";
+}
