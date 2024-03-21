@@ -1,3 +1,4 @@
+
 .navbar {
   background-color: #fff;
 }
@@ -99,6 +100,13 @@
 
 @media only screen and (max-width: 768px) {
 
+  .navbar{
+    height: 62px;
+    margin-top: 19px;
+  }
+  .logo{
+   width:50px
+  }
   .foodBox{
     display:none !important;
   }
@@ -110,7 +118,7 @@
  
   .menu {
     position: absolute;
-    top:71px;
+    top:20px;
     right: 10px; /* Shift to the right side */
     margin-top: 10% !important;
     margin-right: 113% !important;
@@ -119,8 +127,19 @@
   .menu.active ul {
     border-radius:19px;
     box-shadow: -1px 0px 20px 3px;
-    width:460px !important;
+    width:347px !important;
   }
+  .submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 102px;
+    height: 32px;
+    color: #fff;
+    background: #f48e28;
+    border-radius: 20px;
+    font-size: 14px;
+}
 }
 
 .signup-container {

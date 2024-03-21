@@ -1,3 +1,4 @@
+// Itemcard.jsx
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -12,7 +13,6 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import "./Itemcard.css";
 import { useCart } from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
-import Alert from '@mui/material/Alert';
 
 export default function Itemcard({
   image,
@@ -22,10 +22,10 @@ export default function Itemcard({
   productId,
 }) {
   const navigate = useNavigate();
-  const { addToCart, updateCartItemQuantity , cartItems} = useCart();
+  const { addToCart, updateCartItemQuantity, cartItems } = useCart();
   const [quantity, setQuantity] = useState(1); // State for quantity
   const [addedToCart, setAddedToCart] = useState(false); // State to track if item added to cart
-console.log(cartItems);
+
   const handleAddToCart = () => {
     addToCart({ productId, productName, price, quantity });
     setAddedToCart(true); // Set addedToCart to true
@@ -50,13 +50,16 @@ console.log(cartItems);
   return (
     <div className="outerCard">
       <Card sx={{ minWidth: 275 }} className="prodCard">
-        <CardContent>
-          <img src={image} className="prodimage" alt={productName}></img>
+        <CardContent className="prodCon">
           <div className="prodIntro">
-            <h5>{productName}</h5>
-            <span>
-              <StarIcon /> {rating}
-            </span>
+            <img src={image} className="prodimage" alt={productName} />
+            <div>
+              <p className="prodName">{productName}</p>
+              <span>
+                <StarIcon /> {rating}
+              </span>
+              <Typography>{price}</Typography>
+            </div>
           </div>
         </CardContent>
         <div className="CartItem">
@@ -81,7 +84,6 @@ console.log(cartItems);
               </Button>
             )}
           </CardActions>
-          <CardContent>{price}</CardContent>
         </div>
       </Card>
     </div>
