@@ -206,7 +206,7 @@ const CartPage = () => {
   return (
 <>
       <NavBar />
-      <Container maxWidth="md" className="order-payment-container cart-items-container" style={{marginTop:"2%"}}> 
+      <Container maxWidth="md" className="order-payment-container cart-items-container heading-text" style={{marginTop:"2%"}}> 
         {/* Other components */}
         <Grid container spacing={2}>
           {/* Section for displaying cart items */}

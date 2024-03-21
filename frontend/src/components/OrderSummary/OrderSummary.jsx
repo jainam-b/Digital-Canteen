@@ -6,6 +6,7 @@ import {
   MDBContainer,
   MDBRow
 } from "mdb-react-ui-kit";
+import "../Cart/Cart.css"
 import { useCart } from "../Context/CartContext";
 
 export default function OrderDetails2() {
@@ -22,8 +23,8 @@ export default function OrderDetails2() {
           <MDBCol lg="8" xl="6">
             <MDBCard className="border-top border-bottom border-3 border-color-custom">
               <MDBCardBody className="p-5">
-                <p className="lead fw-bold mb-5" style={{ color: "#f37a27" }}>
-                  Purchase Receipt
+                <p className="lead fw-bold mb-5 heading-text" style={{ color: "#02023a" }}>
+                Order Summary
                 </p>
                  {/* Order ID */}
                  <div className="mx-n5 px-5 py-4" style={{ backgroundColor: "#f2f2f2" }}>
