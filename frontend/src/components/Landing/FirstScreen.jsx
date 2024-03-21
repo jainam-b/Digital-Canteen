@@ -15,11 +15,9 @@ function FirstScreen() {
         spacing={2}
       >
         <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionOne">
-          <h1 className='HedingVal'><div>The Fastest <br /> Delivery<br /> In <span className='HeadDiffColor'>Your City</span> </div></h1>
-          <div>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente 
-            atque numquam. Architecto accusantium dolore sit, ratione facere quasi cumque
-            cum. Ex beatae facere magnam nulla maiores tempore ratione necessitatibus, 
+          <h1 className='HedingVal'><div className='text1'>Order  <br /> Food <span className='HeadDiffColor'>with Ease</span> </div></h1>
+          <div className='text2'>
+          Experience the convenience of ordering delicious food online.
           </div>
           <div className='OrderNow'>
             <Button variant="contained" className='OrderButton'>Order Now</Button>
@@ -27,8 +25,8 @@ function FirstScreen() {
         </Box>
         <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionTwo">
           <div className='foodBox'>
-            <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
-            <FSCard cardImage={'junkfood.png'} ImageHead={'Food Combo'} Desp={'Mushroom Sauce '} Price={'$9.15'} />
+            <FSCard className='img1' cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
+            <FSCard className='img2' cardImage={'junkfood.png'} ImageHead={'Food Combo'} Desp={'Mushroom Sauce '} Price={'$9.15'} />
           </div>
           <div className='foodBox'>
             <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />

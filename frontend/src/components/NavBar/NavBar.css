@@ -4,7 +4,7 @@
 }
 
 .logo {
-  width: 120px;
+  width: 50px;
 }
 
 .menu {
@@ -105,7 +105,10 @@
     margin-top: 19px;
   }
   .logo{
-   width:50px
+    margin-left: -83%;
+    width: 37px;
+    margin-top: -24%;
+ 
   }
   .foodBox{
     display:none !important;
@@ -130,12 +133,12 @@
     width:347px !important;
   }
   .submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 102px;
-    height: 32px;
-    color: #fff;
+    display: flex !important ;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 74px !important;
+    height: 32px !important;
+    color: #fff !important;
     background: #f48e28;
     border-radius: 20px;
     font-size: 14px;
@@ -162,6 +165,7 @@
   .submit {
     margin-top: 0;
     margin-left: 10px;
+  
   }
 
   
