@@ -1,14 +1,14 @@
+// FirstScreen.js
 import React from 'react';
 import Box from '@mui/material/Box';
-import "./FirstScreen.css";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import FSCard from './FSCard';
+import './FirstScreen.css';
 
 function FirstScreen() {
   return (
     <div className="container">
-      
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent="center"
@@ -16,9 +16,11 @@ function FirstScreen() {
         spacing={2}
       >
         <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionOne">
-          <h1 className='HedingVal'><div className='text1'>Order  <br /> Food <span className='HeadDiffColor'>with Ease</span> </div></h1>
+          <h1 className='HeadingVal'>
+            <div className='text1'>Order <br /> Food <span className='HeadDiffColor'>with Ease</span> </div>
+          </h1>
           <div className='text2'>
-          Experience the convenience of ordering delicious food online.
+            Experience the convenience of ordering delicious food online.
           </div>
           <div className='OrderNow'>
             <Button variant="contained" className='OrderButton'>Order Now</Button>
