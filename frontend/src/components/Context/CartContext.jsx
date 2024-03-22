@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import Alert from '@mui/material/Alert';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartContext = createContext();
 
@@ -10,6 +12,8 @@ export const CartProvider = ({ children }) => {
   const [showAlert, setShowAlert] = useState(false); // State variable to control alert visibility
   const [orderedItems, setOrderedItems] = useState([]); // New state for ordered items
   const [orderId, setOrderId] = useState(null); // State variable for order ID
+
+  
 
   useEffect(() => {
     // Load cart items from localStorage only on component mount
@@ -56,7 +60,7 @@ export const CartProvider = ({ children }) => {
       saveCartItemsToStorage(updatedCartItems);
     }
 
-    setShowAlert(true); // Set showAlert to true when item is added to cart
+    // setShowAlert(true); // Set showAlert to true when item is added to cart
 
     // Hide the alert after 2 seconds
     setTimeout(() => {

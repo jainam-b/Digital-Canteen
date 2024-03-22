@@ -68,7 +68,7 @@ export default function CloseModal() {
       onClose={handleClose}
       maxWidth="sm"
       fullWidth
-      BackdropProps={{ style: { backdropFilter: 'none' } }} // Disable backdrop blur
+      
     >
       <DialogTitle>
         <Typography variant="h4" align="center">

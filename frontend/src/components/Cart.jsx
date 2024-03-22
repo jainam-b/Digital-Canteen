@@ -9,7 +9,11 @@ import {
   CardMedia,
   CardActions,
   IconButton,
-  Modal
+  Modal,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from "@mui/material";
 import { Remove, Add } from "@mui/icons-material";
 import Button from "@mui/material/Button";
@@ -19,6 +23,7 @@ import NavBar from "./NavBar/NavBar";
 import { AuthContext } from "./Context/AuthContext"; // Import AuthContext
 import { useNavigate } from "react-router-dom";
 import CloseModal from './LoginModal'; // Import the CloseModal component as default
+import "./Cart/Cart.css"
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity, orderedItems, setOrderedItems } =
@@ -201,14 +206,14 @@ const CartPage = () => {
   return (
 <>
       <NavBar />
-      <Container maxWidth="md" className="order-payment-container">
+      <Container maxWidth="md" className="order-payment-container cart-items-container heading-text" style={{marginTop:"2%"}}> 
         {/* Other components */}
         <Grid container spacing={2}>
           {/* Section for displaying cart items */}
           <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom>
+            <h1 variant="h6" style={{ textAlign: "center",  fontWeight:"600px"}} gutterBottom>
               Cart Items
-            </Typography>
+            </h1>
             {cartItems.map((item, index) => (
               <Card key={index} sx={{ display: "flex", marginBottom: 2 }}>
                 <CardMedia
@@ -242,6 +247,7 @@ const CartPage = () => {
               </Card>
             ))}
           </Grid>
+          <hr />
           {/* Section 2: Total Price */}
           <Grid container spacing={2}>
             {/* Total Price Text */}
@@ -285,9 +291,9 @@ const CartPage = () => {
       </Container>
 
       {/* Modal for login/signup */}
-      <Modal open={showModal} onClose={closeModal}>
+      <Dialog open={showModal} onClose={closeModal} BackdropProps={{ invisible: true }}>
         <CloseModal onSuccess={closeModal} />
-      </Modal>
+      </Dialog>
 
       {/* Success alert */}
       {showSuccessAlert && (
