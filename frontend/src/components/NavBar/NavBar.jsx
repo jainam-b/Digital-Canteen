@@ -50,7 +50,7 @@ const NavBar = () => {
         <AppBar
           position="static"
           className="navbar"
-          style={{ borderRadius: "18px", cursor: "pointer" }}
+          style={{ borderRadius: "18px", cursor: "pointer"  , marginTop:"-5%"}}
           color="inherit"
         >
           <Toolbar

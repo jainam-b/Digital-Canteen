@@ -8,7 +8,9 @@ import CircularProgress from "@mui/material/CircularProgress"; // Import Circula
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import { useCart } from "../Context/CartContext";
-
+import { Desk } from "@mui/icons-material";
+import DesktopCard from "./DesktopCard";
+import MobileCard from "./MobileCard";
 function Items() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // State variable to track loading status
@@ -70,7 +72,7 @@ function Items() {
             <div className="productMenu">
               {products.length > 0 ? (
                 products.map((product, index) => (
-                  <Itemcard
+                  <DesktopCard
                     key={index}
                     productId={product._id}
                     image={product.image   } // Replace with the actual image URL

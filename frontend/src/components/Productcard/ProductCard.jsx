@@ -1,53 +1,53 @@
-// import React from "react"; 
-// import "./productcard.css"
-// const RestaurantCards = ({
-//   id,
-//   name,
-//   cuisines,
-//   cloudinaryImageId,
-//   sla,
-//   avgRating,
-//   costForTwo,
-//   locality,
-//   aggregatedDiscountInfoV3,
-// }) => {
-//   return (
-//     <div className="card" key={id}>
-//       <div className="res-img">
-//         <img src="./sandwich.png" />
-//         {aggregatedDiscountInfoV3?.header && (
-//           <span className="img-discount-info">
-//             {" "}
-//             {aggregatedDiscountInfoV3?.header +
-//               " " +
-//               aggregatedDiscountInfoV3?.subHeader?.replace("₹", "")}
-//           </span>
-//         )}
-//       </div>
+import React from "react"; 
+import "./productcard.css"
+const RestaurantCards = ({
+  id,
+  name,
+  cuisines,
+  cloudinaryImageId,
+  sla,
+  avgRating,
+  costForTwo,
+  locality,
+  aggregatedDiscountInfoV3,
+}) => {
+  return (
+    <div className="card" key={id}>
+      <div className="res-img">
+        <img src="./sandwich.png" />
+        {aggregatedDiscountInfoV3?.header && (
+          <span className="img-discount-info">
+            {" "}
+            {aggregatedDiscountInfoV3?.header +
+              " " +
+              aggregatedDiscountInfoV3?.subHeader?.replace("₹", "")}
+          </span>
+        )}
+      </div>
 
-//       <div className="res-name">
-//         <h5 className="resName">jainam</h5>
-//         <div className="resName__details">
-//           {/* <p>{cuisines.join(", ")}</p> */}
-//           {avgRating && (
-//             <p className={"ratings " + ("avgRating" >= 4.0 ? "green" : avgRating > 3.0 ? "yellow" : "red")}>
-//               <i className="fa fa-star"></i>
-//               {avgRating}
-//             </p>
-//           )}
-//         </div>
+      <div className="res-name">
+        <h5 className="resName">jainam</h5>
+        <div className="resName__details">
+          {/* <p>{cuisines.join(", ")}</p> */}
+          {avgRating && (
+            <p className={"ratings " + ("avgRating" >= 4.0 ? "green" : avgRating > 3.0 ? "yellow" : "red")}>
+              <i className="fa fa-star"></i>
+              {avgRating}
+            </p>
+          )}
+        </div>
 
-//         <p>{locality}</p>
-//       </div>
-//       <div className="res-info">
-//         {/* <p> {sla.deliveryTime} mins</p> */}
-//         <p> {costForTwo}</p>
-//       </div>
-//     </div>
-//   );
-// };
+        <p>{locality}</p>
+      </div>
+      <div className="res-info">
+        {/* <p> {sla.deliveryTime} mins</p> */}
+        <p> {costForTwo}</p>
+      </div>
+    </div>
+  );
+};
 
-// export default RestaurantCards;
+export default RestaurantCards;
 
 
 // // Itemcard.jsx
