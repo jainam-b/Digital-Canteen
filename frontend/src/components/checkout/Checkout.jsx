@@ -1,30 +1,26 @@
-import React, { useState, useEffect } from 'react';
- 
-import Mobile from '../NavBar/MobileNav';
-import NavBar from '../NavBar/NavBar';
+import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const App = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width < 768); // Consider devices with width less than 768 pixels as mobile
-    };
-
-    // Initial check on component mount
-    handleResize();
-
-    // Event listener for window resize
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+function App() {
+  const showToastMessage = () => {
+    toast.success("Item Added to cart  !", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
+  };
 
   return (
     <div>
-      {isMobile ? <p><Mobile></Mobile></p> : <p><NavBar></NavBar></p>}
+      <button onClick={showToastMessage}>Notify</button>
+      <ToastContainer closeOnClick  />
     </div>
   );
 }

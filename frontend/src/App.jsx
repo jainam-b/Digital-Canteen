@@ -13,6 +13,7 @@ import { UserProvider } from './components/Context/UserContext ';
 import Items from "./components/Items/Items";
 import Checkout from "./components/checkout/Checkout";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
+import ProductCard from "../src/components/Productcard/ProductCard"
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/item" element={<Items />} />
                 <Route path="/" exact element={<Landing />} />
-                <Route path="/try" exact element={<FirstScreen />} />
+                <Route path="/try" exact element={<ProductCard />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/signup" element={<Signup />} />

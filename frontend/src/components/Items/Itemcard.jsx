@@ -13,7 +13,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import "./Itemcard.css";
 import { useCart } from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+ 
 export default function Itemcard({
   image,
   productName,
@@ -29,6 +32,8 @@ export default function Itemcard({
   const handleAddToCart = () => {
     addToCart({ productId, productName, price, quantity });
     setAddedToCart(true); // Set addedToCart to true
+    showToastMessage();
+     
   };
 
   const handleGoToCart = () => {
@@ -45,14 +50,32 @@ export default function Itemcard({
       setQuantity((prevQuantity) => prevQuantity - 1); // Decrease quantity by 1
       updateCartItemQuantity(productName, quantity - 1); // Update quantity in cart context
     }
+    
+  };
+  const showToastMessage = () => {
+    toast.success("Item Added to cart!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      // transition: Bounce,
+    });
+    
   };
 
   return (
-    <div className="outerCard">
+    <><ToastContainer closeOnClick /><div className="outerCard">
+      {/* <button onClick={showToastMessage}>Notify</button> */}
+
+
       <Card sx={{ minWidth: 275 }} className="prodCard">
         <CardContent className="prodCon">
           <div className="prodIntro">
-            <img src={image} className="prodimage" alt={productName} />
+            <img src={image} className="prodimage" alt={productName} style={{borderRadius:"18px "}} />
             <div>
               <p className="prodName">{productName}</p>
               <span>
@@ -78,6 +101,7 @@ export default function Itemcard({
               <Button
                 variant="contained"
                 onClick={handleAddToCart}
+
                 className="Cart"
               >
                 Add to Cart
@@ -86,6 +110,6 @@ export default function Itemcard({
           </CardActions>
         </div>
       </Card>
-    </div>
+    </div></>
   );
 }

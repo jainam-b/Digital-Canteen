@@ -73,7 +73,7 @@ function Items() {
                   <Itemcard
                     key={index}
                     productId={product._id}
-                    image="sandwich.png" // Replace with the actual image URL
+                    image={product.image   } // Replace with the actual image URL
                     productName={product.name}
                     rating={product.rating} // Assuming rating is a property of the product object
                     price={`${product.price}`} // Assuming price is a property of the product object

@@ -211,9 +211,9 @@ const CartPage = () => {
         <Grid container spacing={2}>
           {/* Section for displaying cart items */}
           <Grid item xs={12}>
-            <Typography variant="h6" style={{ textAlign: "center", fontSize:"19.2px" , fontWeight:"600px"}} gutterBottom>
+            <h1 variant="h6" style={{ textAlign: "center",  fontWeight:"600px"}} gutterBottom>
               Cart Items
-            </Typography>
+            </h1>
             {cartItems.map((item, index) => (
               <Card key={index} sx={{ display: "flex", marginBottom: 2 }}>
                 <CardMedia
