@@ -66,4 +66,17 @@ border-radius: 20px !important;
   .foodContent {
     padding: 20px; /* Add padding for better text spacing */
   }
+
+  @media only screen and (max-width: 768px) {
+    .Foodcards {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      gap: 20px;
+      flex-direction: column;
+    }
+
+  }
   

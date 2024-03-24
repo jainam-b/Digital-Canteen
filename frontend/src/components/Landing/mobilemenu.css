@@ -1,19 +1,16 @@
-.container {
+.mobile-menu-container {
   padding: 20px;
 }
 
-.HedingVal {
+.heading-value {
   font-size: 3rem;
-  /* margin-top: -39%;
-  font-size: 95px; */
-  
 }
 
-.HeadDiffColor {
+.headline-diff-color {
   color: #f48e28;
 }
 
-.OrderButton {
+.order-button {
   background-color: #EFAB68 !important;
   box-shadow: 2px 2px 1px;
   font-family: "Kanit", sans-serif !important;
@@ -25,61 +22,65 @@
   padding: 20px;
 }
 
-.foodBox {
+.food-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.foodBox > * {
+.food-box > * {
   flex: 1 1 45%;
   margin-bottom: 20px;
 }
-.OrderNow{
-  margin-top:2%;
+
+.order-now {
+  margin-top: 2%;
 }
 
-
-.text1{
-
+.text1 {
+  color: black ;
   font-size: 180%;
-  margin-top:-25%
-}
-
-.text2{
-  font-size:141%;
-}
-
-
-
-
-
-
-
-@media (max-width: 600px) {
-  .container{
-    margin-bottom: -67% !important;
-    margin-top: -17% !important;
-  }
-  .foodBox > * {
-    flex-basis: 100%;
-  }
-  
-  .sectionTwo {
-    margin-top: 20px;
-  }
-
-  .sectionOne{
-    width:100%
-  }
-  .text1 {
-    font-size: 118%;
-    margin-top: -3%;
+  margin-top: -25%;
 }
 
 .text2 {
-  margin-left: 1%;
-  font-size: 111%;
+  color: black;
+  font-size: 141%;
 }
 
+@media (max-width: 756px) {
+  .mobile-menu-container {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .food-box > * {
+    flex-basis: 100%;
+  }
+ 
+    .sectionTwo {
+      display: none;
+      color: black !important;
+    }
+  
+  
+  .sectionOne {
+    width: 100% !important;
+  }
+
+  .text1 {
+    color:black !important;
+    font-size: 118%;
+    margin-top: 0;
+  }
+
+  .text2 {
+    margin-left: 1%;
+    font-size: 111%;
+  }
+
+  .item {
+    margin-left: -8%;
+    margin-top: 54%;
+  }
 }

@@ -7,7 +7,7 @@ import './mobilemenu.css';
 
 function Mobilemenu() {
   return (
-    <div className="container">
+    <div className="">
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
         justifyContent="center"
@@ -25,16 +25,19 @@ function Mobilemenu() {
             <Button variant="contained" className='OrderButton' onClick={()=>{window.location.href="/item"}}>Order Now</Button>
           </div>
         </Box>
-        <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionTwo"onClick={()=>{window.location.href="/item"}}>
-          <div className='foodBox'>
-            <FSCard className='img1' cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
-            <FSCard className='img2' cardImage={'junkfood.png'} ImageHead={'Food Combo'} Desp={'Mushroom Sauce '} Price={'$9.15'} />
-          </div>
-          <div className='foodBox'>
-            <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
-            <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
-          </div>
-        </Box>
+        {/* Conditionally render sectionTwo */}
+        {window.innerWidth > 756 && (
+          <Box sx={{ width: { xs: '100%', sm: '50%' } }} className="sectionTwo" onClick={()=>{window.location.href="/item"}}>
+            <div className='foodBox'>
+              <FSCard className='img1' cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
+              <FSCard className='img2' cardImage={'junkfood.png'} ImageHead={'Food Combo'} Desp={'Mushroom Sauce '} Price={'$9.15'} />
+            </div>
+            <div className='foodBox'>
+              <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
+              <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
+            </div>
+          </Box>
+        )}
       </Stack>
     </div>
   );

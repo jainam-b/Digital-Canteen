@@ -95,7 +95,9 @@ function Items() {
                     />
                   )
                 ))
-              ) : (
+              )
+
+               : (
                 <div className="loader">
                   <CircularProgress />
                 </div>

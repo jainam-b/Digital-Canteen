@@ -11,15 +11,18 @@
   background-image: url('homepage.png');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  min-height: 115vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: -2%;
   width: 102%;
   top: 0%;
-  /* position: absolute; */
-  margin-top: -1%;
+  /* position: absolute;
+  margin-top: -1%; */
+  position: relative;
+  margin-top: -22%;
+  width: 121%;
 }
 
 .sectionOne {
@@ -28,8 +31,9 @@
 }
 
 .sectionTwo {
-  display: none;
+ 
   margin-top: 20px;
+  display:none;
 }
 
 .HeadingVal {
@@ -51,8 +55,12 @@
 .sectionOne,
 .sectionTwo {
   padding: 20px;
+
 }
 
+.sectionTwo{
+  display:none;
+}
 .foodBox {
   display: flex;
   flex-wrap: wrap;
@@ -65,22 +73,31 @@
 }
 
 .OrderNow {
-  margin-top: 5%;
+  margin-top: 4% ;
 }
 
 .text1 {
-  font-size: 180%;
-  margin-top: 15%;
+  color:white  !important;
+  font-size: 180% ;
+  margin-top: 32%  !important;
 }
 
 .text2 {
   font-size: 141%;
+  color:white !important;
 }
 
 @media (max-width: 600px) {
-  .container {
+  /* .container {
     margin-bottom: -67% !important;
     margin-top: -17% !important;
+  } */
+  .OrderNow{
+    margin-top:-7%;
+  }
+
+  .container{
+    margin-top:-47% !important;
   }
 
   .foodBox > * {
@@ -96,8 +113,9 @@
   }
 
   .text1 {
+    color:white  !important;
     font-size: 118%;
-    margin-top: -3%;
+    margin-top: 12%;
   }
 
   .text2 {
