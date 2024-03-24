@@ -14,6 +14,7 @@ import Items from "./components/Items/Items";
 import Checkout from "./components/checkout/Checkout";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
 import ProductCard from "../src/components/Productcard/ProductCard"
+import About from "./components/About/About";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/order-summary" element={<OrderSummary />} />
               </Routes>
             </BrowserRouter>

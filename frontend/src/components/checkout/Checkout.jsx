@@ -3,6 +3,8 @@ import "../Productcard/productcard.css";
 import { TbDiscountCheckFilled } from "react-icons/tb";
 import { useCart } from "../Context/CartContext";
 import NavBar from "../NavBar/NavBar";
+import DesktopCard from "../Items/DesktopCard";
+import MobileCard from "../Items/MobileCard";
 
 const Checkout = () => {
   const { orderedItems } = useCart(); // Change cartItems to orderedItems
@@ -13,34 +15,47 @@ const Checkout = () => {
 
   return (
     <>
+      <div className="itemMenu">
       <NavBar />
-      <div className="container order-summary">
-        <p className="heading-text">Order Summary</p>
-        <p className="order-confirm-info">
-          <TbDiscountCheckFilled color="green" size="1.5rem" />
-          Your Order is Confirmed!
-        </p>
-        <img className="display-img-md mtop10 mbottom10" />
-        {/* <p>Sit back while we deliver it in less than 30 minutes!!</p> */}
-        <p className="heading-text mtop20">Order Details</p>
-        <p className="mbottom10">Order ID: {orderIds}</p>
-
-        <div className="order-summary-details">
-          <div className="cart-order-summary">
-            {orderedItems.map((item, index) => (
-              <div key={index} className="cart-summary-item">
-                <p className="item-name">{item.productName}</p>
-                <p>{item.description}</p>
-                <p>₹ {item.price}</p>
-              </div>
-            ))}
-            <div className="total-bill">
-              <h3 className="subheading-text">To Pay</h3>
-              <h3 className="heading-text">₹ {totalAmount}</h3>
-            </div>
+      <div className="Items">
+        <h3>Most Popular Items</h3>
+        {loading ? (
+          <div className="loader">
+            <CircularProgress />
           </div>
-        </div>
+        ) : (
+          <div className="productMenu">
+            {products.length > 0 ? (
+              products.map((product, index) => (
+                isMobile ? (
+                  <MobileCard
+                    key={index}
+                    productId={product._id}
+                    image={product.image}
+                    productName={product.name}
+                    rating={product.rating}
+                    price={`${product.price}`}
+                  />
+                ) : (
+                  <DesktopCard
+                    key={index}
+                    productId={product._id}
+                    image={product.image}
+                    productName={product.name}
+                    rating={product.rating}
+                    price={`${product.price}`}
+                  />
+                )
+              ))
+            ) : (
+              <div className="loader">
+                <CircularProgress />
+              </div>
+            )}
+          </div>
+        )}
       </div>
+    </div>
     </>
   );
 };

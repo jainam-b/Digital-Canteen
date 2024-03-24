@@ -89,11 +89,11 @@ const NavBar = () => {
                     window.location.href = "/";
                   }}
                 >
-                  Services
+                  About
                 </li>
                 <li
                   onClick={() => {
-                    window.location.href = "/";
+                    window.location.href = "/about";
                   }}
                 >
                   Shop
