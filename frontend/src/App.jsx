@@ -14,6 +14,7 @@ import Items from "./components/Items/Items";
 import Checkout from "./components/checkout/Checkout";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
 import ProductCard from "../src/components/Productcard/ProductCard"
+import About from "./components/About/About";
 
 
 function App() {
@@ -29,11 +30,12 @@ function App() {
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/item" element={<Items />} />
                 <Route path="/" exact element={<Landing />} />
-                <Route path="/try" exact element={<ProductCard />} />
+                <Route path="/try" exact element={<Checkout />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/order-summary" element={<OrderSummary />} />
               </Routes>
             </BrowserRouter>
