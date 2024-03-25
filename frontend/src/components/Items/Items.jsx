@@ -37,7 +37,7 @@ function Items() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:3000/order/menus");
-        console.log(response.data,"itemjsx")
+        // console.log(response.data,"itemjsx")
         setProducts(response.data);
         setLoading(false);
       } catch (error) {

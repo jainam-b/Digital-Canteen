@@ -16,6 +16,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 import "../Productcard/productcard.css"; 
+
 export default function Itemcard({
   image,
   productName,
@@ -76,12 +77,16 @@ export default function Itemcard({
         <div className="">
           <div className="res-img">
             <img src={  "./sandwich.png"}className="prodimage" alt={productName} style={{borderRadius:"18px"}} />
-            <div>
+            <div className="res-name">
               <p className="resName">{productName}</p>
-              <span>
-                <StarIcon /> {rating}
+              <span className="ratings green">
+              <i class="fa fa-star" aria-hidden="true"></i> 4.4
               </span>
-              <Typography>{price}</Typography>
+              <div className="res-info">
+              <p></p>
+              <p>₹{price}</p>
+
+              </div>
             </div>
           </div>
         </div>
