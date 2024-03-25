@@ -12,6 +12,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { useCart } from "../Context/CartContext";
+import "./NavBar.css";
 
 const MobileNavBar = () => {
   const [showMenu, setShowMenu] = useState(false);

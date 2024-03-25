@@ -47,7 +47,7 @@ const NavBar = () => {
       {isMobile ? ( // Render MobileNavBar if the screen size is mobile
         <MobileNavBar />
       ) : ( // Render regular NavBar for desktop view
-        <AppBar
+        <AppBar 
           position="static"
           className="navbar"
           style={{ borderRadius: "18px", cursor: "pointer"  , marginTop:"-5%"}}

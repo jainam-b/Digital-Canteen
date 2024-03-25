@@ -32,7 +32,17 @@ margin-left: 64%;
   margin-right: 64%;
 }
 
+.crouseldiv{
+  width:60%
+}
 
+@media only screen and (max-width: 768px)
+{
+.crouseldiv{
+  margin:20px;
+  width:100% !important;
+}
+}
 
 /* @media only screen and (max-width: 600px) {
 .carousel{

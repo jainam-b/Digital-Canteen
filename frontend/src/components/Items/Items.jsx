@@ -8,6 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import { useCart } from "../Context/CartContext";
 import DesktopCard from "./DesktopCard";
 import MobileCard from "./MobileCard";
+import Itemcard from "./DesktopCard";
 
 function Items() {
   const [products, setProducts] = useState([]);
@@ -36,6 +37,7 @@ function Items() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:3000/order/menus");
+        console.log(response.data,"itemjsx")
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
@@ -69,6 +71,7 @@ function Items() {
                     price={`${product.price}`}
                   />
                 ) : (
+        
                   <DesktopCard
                     key={index}
                     productId={product._id}
@@ -79,7 +82,20 @@ function Items() {
                   />
                 )
               ))
-            ) : (
+            )
+
+            // (
+            //   <Itemcard
+            //   key={index}
+            //         productId={product._id}
+            //         image={product.image}
+            //         productName={product.name}
+            //         rating={product.rating}
+            //         price={`${product.price}`}
+            //   />
+            // )
+            //   )))
+             : (
               <div className="loader">
                 <CircularProgress />
               </div>

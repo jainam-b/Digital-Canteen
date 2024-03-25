@@ -68,11 +68,13 @@ export default function Itemcard({
   };
 
   return (
-    <><ToastContainer closeOnClick /><div className="outerCard">
+    <>
+    <ToastContainer closeOnClick />
+    <div className="outerCard">
       {/* <button onClick={showToastMessage}>Notify</button> */}
 
 
-      <Card sx={{ minWidth: 275 }} className="prodCard">
+      <Card className="prodCard">
         <CardContent className="prodCon">
           <div className="prodIntro">
             <img src={image} className="prodimage" alt={productName} style={{borderRadius:"18px "}} />

@@ -1,15 +1,43 @@
-
-
-
 .container {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
   padding: 20px;
+  margin-top: -1%;
 }
 
-.HedingVal {
+.background-image {
+  background-image: url('homepage.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 115vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -2%;
+  width: 102%;
+  top: 0%;
+  /* position: absolute;
+  margin-top: -1%; */
+  position: relative;
+  margin-top: -22%;
+  width: 121%;
+}
+
+.sectionOne {
+  text-align: center;
+  color: #fff;
+}
+
+.sectionTwo {
+ 
+  margin-top: 20px;
+  display:none;
+}
+
+.HeadingVal {
   font-size: 3rem;
-  /* margin-top: -39%;
-  font-size: 95px; */
-  
 }
 
 .HeadDiffColor {
@@ -17,17 +45,22 @@
 }
 
 .OrderButton {
-  background-color: #EFAB68 !important;
+  background-color: #efab68 !important;
   box-shadow: 2px 2px 1px;
   font-family: "Kanit", sans-serif !important;
   font-weight: 700 !important;
   font-style: normal !important;
 }
 
-.sectionOne, .sectionTwo {
+.sectionOne,
+.sectionTwo {
   padding: 20px;
+
 }
 
+.sectionTwo{
+  display:none;
+}
 .foodBox {
   display: flex;
   flex-wrap: wrap;
@@ -38,47 +71,55 @@
   flex: 1 1 45%;
   margin-bottom: 20px;
 }
-.OrderNow{
-  margin-top:2%;
+
+.OrderNow {
+  margin-top: 4% ;
 }
 
-
-.text1{
-
-  font-size: 180%;
-  margin-top:-25%
+.text1 {
+  color:white  !important;
+  font-size: 180% ;
+  margin-top: 32%  !important;
 }
 
-.text2{
-  font-size:141%;
+.text2 {
+  font-size: 141%;
+  color:white !important;
 }
-
-
-
-
-
-
 
 @media (max-width: 600px) {
+  /* .container {
+    margin-bottom: -67% !important;
+    margin-top: -17% !important;
+  } */
+  .OrderNow{
+    margin-top:-7%;
+  }
+
+  .container{
+    margin-top:-47% !important;
+  }
+
   .foodBox > * {
     flex-basis: 100%;
   }
-  
+
   .sectionTwo {
     margin-top: 20px;
   }
 
-  .sectionOne{
-    width:100%
+  .sectionOne {
+    width: 100%;
   }
+
   .text1 {
+    color:white  !important;
     font-size: 118%;
-    margin-top: -3%;
-}
+    margin-top: 12%;
+  }
 
-.text2 {
-  margin-left: 1%;
-  font-size: 111%;
-}
-
+  .text2 {
+    margin-left: 1%;
+    font-size: 111%;
+  }
 }

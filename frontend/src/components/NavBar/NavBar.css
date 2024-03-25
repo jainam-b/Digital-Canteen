@@ -1,6 +1,7 @@
 
 .navbar {
   background-color: #fff;
+  width:100%;
 }
 
 .logo {
@@ -142,6 +143,13 @@
     background: #f48e28;
     border-radius: 20px;
     font-size: 14px;
+}
+.navbar-container>header{
+  left:0%;
+  /* width:86%; */
+  border-radius:18px;
+  cursor:pointer;
+
 }
 }
 

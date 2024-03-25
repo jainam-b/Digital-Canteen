@@ -8,6 +8,7 @@ import Subscribe from "../Subscribe/Subscribe";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import Mobile from "../NavBar/MobileNav";
+import Mobilemenu from "../Landing/Mobilemenu";
 
 
 import "./Landing.css";
@@ -33,13 +34,14 @@ function Landing() {
   return (
     
     <div className="container">
-      <div>
-      {isMobile ? <p><Mobile></Mobile></p> : <p><NavBar></NavBar></p>}
+      <div className="nav" >
+      {isMobile ? <p><Mobile></Mobile></p> : <p className="nav" ><NavBar></NavBar></p>}
     </div>
 
       <div>
-        <FirstScreen />
-      
+        {/* <FirstScreen /> */}
+        {isMobile ? <Mobilemenu></Mobilemenu> : <FirstScreen></FirstScreen>}
+        {/* <Mobilemenu></Mobilemenu> */}
         <Items />
         <FoodItem />
         <Feedback />

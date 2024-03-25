@@ -5,7 +5,7 @@ import "./FeedbackCrousel.css"
 
 export default function FeedbackCrousel() { 
 return ( 
-	<div style={{ display: 'block', width: 700, padding: 30 }}> 
+	<div className='crouseldiv' > 
 	
 	<Carousel> 
 		<Carousel.Item interval={5000} className='CrouselP1'> 

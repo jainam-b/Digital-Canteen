@@ -90,7 +90,9 @@ export default function Itemcard({
 
     <div>
       <div>
-      {isMobile ? <p><MobileCard></MobileCard></p> : <p><DesktopCard></DesktopCard></p>}
+      {isMobile ? <p><MobileCard
+      
+      ></MobileCard></p> : <p><DesktopCard></DesktopCard></p>}
     </div>
     </div>
   );

@@ -8,7 +8,7 @@
     padding: 20px;
   }
   
-  .footerSection {
+  .footerSections {
     width: 100%;
     max-width: 300px;
     padding: 20px;
@@ -27,13 +27,23 @@
     border-radius: 10px;
   }
   
-  @media only screen and (min-width: 768px) {
+  @media only screen and (max-width: 768px) {
     .Footer {
       justify-content: space-between;
+      /* width:86% !important; */
+      margin-top: 5%;
+      background-color: rgb(246, 246, 246);
+      display: flex;
+      flex-wrap: wrap;
+      display:flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px;
+      flex-direction:column;
     }
   
-    .footerSection {
-      width: calc(25% - 40px);
+    .footerSections {
+    width:70%
     }
   }
   
