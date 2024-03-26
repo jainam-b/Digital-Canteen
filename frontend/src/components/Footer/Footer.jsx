@@ -1,6 +1,8 @@
 import React from 'react';
 import "./Footer.css";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import TwitterIcon from '@mui/icons-material/Twitter';
+
 import Button from '@mui/material/Button';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
@@ -8,12 +10,14 @@ function Footer() {
   return (
     <div className='Footer'>
       <div className='footerSections footerSection1'>
-        <img src="your-logo.png" alt="logo" />
+        <img src="finallogo.jpg" alt="logo" />
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eveniet repellendus a doloremque officia vitae quam aliquid voluptatibus excepturi! Voluptatum.
         </div>
         <div>
           <FacebookRoundedIcon />
+          <TwitterIcon />
+      
         </div>
       </div>
       <div className='footerSections footerSection2'>

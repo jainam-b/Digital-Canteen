@@ -9,8 +9,7 @@ function Subscribe() {
 <img src="SubscribeBurger.png" className='Subscribeimage'></img>
 <div className='subContent'>
     <h3>Subcribe To Our Newsletter</h3>
-    <div>Lorem ipsum dolor sit amet, consectetur adipidrscing elit. Purus mauris 
-    sem sed urna venenatis vivamus. Egestas in velit nulla viverra turpis id ac. Amet faucibus tempus.</div>
+    <div>Subscribe now for mouthwatering updates on our Canteen Management System! Get exclusive menu previews, special offers, and insider tips delivered straight to your inbox. Don't miss out join today</div>
     <div className='SubscribeInput'>
     <input placeholder='Type your email here'/>
     <Button variant="contained" className='subscribeButton'>Subscribe</Button>
