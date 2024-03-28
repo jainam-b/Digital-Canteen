@@ -9,9 +9,9 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [showAlert, setShowAlert] = useState(false); // State variable to control alert visibility
-  const [orderedItems, setOrderedItems] = useState([]); // New state for ordered items
-  const [orderId, setOrderId] = useState(null); // State variable for order ID
+  const [showAlert, setShowAlert] = useState(false); 
+  const [orderedItems, setOrderedItems] = useState([]); 
+  const [orderId, setOrderId] = useState(null); 
 
   
 
