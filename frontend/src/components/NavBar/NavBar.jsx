@@ -86,18 +86,18 @@ const NavBar = () => {
                 </li>
                 <li
                   onClick={() => {
-                    window.location.href = "/";
+                    window.location.href = "/about";
                   }}
                 >
                   About
                 </li>
-                <li
+                {/* <li
                   onClick={() => {
                     window.location.href = "/about";
                   }}
                 >
                   Shop
-                </li>
+                </li> */}
               </ul>
             </div>
 

@@ -90,7 +90,7 @@
 }
 
 .resName {
-  font-size: 22px;
+  /* font-size: 22px; */
   font-weight: 500;
   color: rgb(44, 44, 44);
   margin-bottom: 6px;
@@ -107,7 +107,9 @@
 }
 
 .res-name p {
-  color: #868383;
+  font-size: 130%;
+  /* font-weight: bold; */
+  color: black !important;
   height: 20px;
   overflow: hidden;
   display: -webkit-box;
@@ -117,10 +119,16 @@
 }
 
 .res-info {
+  /* font-size: 112%; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2px;
+  /* font-size: 131%; */
+  margin-top: -1%;
+  font-size: 114%;
+
+  /* font-weight: bold; */
 }
 
 .res-info p:nth-child {
@@ -521,7 +529,7 @@
 }
 
 .resName {
-  font-size: 0.9rem;
+  font-size: 129%;
   font-weight: 500;
   color: rgb(44, 44, 44);
   margin-bottom: 6px;
@@ -538,7 +546,7 @@
 }
 
 .res-name p {
-  color: #868383;
+  /* color: #868383; */
   height: 20px;
   overflow: hidden;
   display: -webkit-box;
@@ -547,6 +555,7 @@
   -webkit-box-orient: vertical;
 }
 .res-info {
+  
   display: flex;
   align-items: center;
   justify-content: space-between;

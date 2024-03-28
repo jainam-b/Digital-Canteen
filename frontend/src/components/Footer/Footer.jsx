@@ -12,7 +12,7 @@ function Footer() {
       <div className='footerSections footerSection1'>
         <img src="finallogo.jpg" alt="logo" />
         <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eveniet repellendus a doloremque officia vitae quam aliquid voluptatibus excepturi! Voluptatum.
+          Get in touch 
         </div>
         <div>
           <FacebookRoundedIcon />
