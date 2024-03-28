@@ -21,7 +21,7 @@ function FirstScreen() {
           </div>
         </Box>
       </div>
-      <Box className="sectionTwo" onClick={()=>{window.location.href="/item"}}>
+      {/* <Box className="sectionTwo" onClick={()=>{window.location.href="/item"}}>
         <div className='foodBox'>
           <FSCard className='img1' cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
           <FSCard className='img2' cardImage={'junkfood.png'} ImageHead={'Food Combo'} Desp={'Mushroom Sauce '} Price={'$9.15'} />
@@ -30,7 +30,7 @@ function FirstScreen() {
           <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
           <FSCard cardImage={'SubscribeBurger.png'} ImageHead={'Burger'} Desp={'Mushroom Sauce '} Price={'$5.15'} />
         </div>
-      </Box>
+      </Box> */}
     </div>
   );
 }

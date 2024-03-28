@@ -60,7 +60,7 @@ const NavBar = () => {
             <Typography variant="h6" component="div">
               <img
                 src="finallogo.jpg"
-                alt="Logo"
+                alt="Logo" 
                 onClick={() => {
                   window.location.href = "/";
                 }}

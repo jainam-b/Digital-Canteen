@@ -46,6 +46,11 @@
   padding: 8px 16px;
 }
 
+.description{
+  font-weight: 500;
+  font-style: italic;
+}
+
 
 
 /*  */

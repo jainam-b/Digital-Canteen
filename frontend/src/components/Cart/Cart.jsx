@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useCart } from "./Context/CartContext";
+import { useCart } from "../Context/CartContext";
 import {
   Container,
   Typography,
@@ -19,11 +19,11 @@ import { Remove, Add } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import axios from "axios"; // Import axios for making HTTP requests
-import NavBar from "./NavBar/NavBar";
-import { AuthContext } from "./Context/AuthContext"; // Import AuthContext
+import NavBar from "../NavBar/NavBar";
+import { AuthContext } from "../Context/AuthContext"; // Import AuthContext
 import { useNavigate } from "react-router-dom";
-import CloseModal from './LoginModal'; // Import the CloseModal component as default
-import "./Cart/Cart.css"
+import CloseModal from '../LoginModal'; // Import the CloseModal component as default
+import "./Cart.css"
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart, updateCartItemQuantity, orderedItems, setOrderedItems } =
