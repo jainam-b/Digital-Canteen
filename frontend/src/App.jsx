@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./components/Context/CartContext";
-import CartPage from "./components/Cart";
+import CartPage from "./components/Cart/Cart";
 import Payment from "./components/Payments";
 import Landing from "./components/Landing/Landing";
 import FirstScreen from "./components/Landing/FirstScreen";

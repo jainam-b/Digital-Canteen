@@ -83,6 +83,8 @@ function Items() {
                       productName={product.name}
                       rating={product.rating}
                       price={`${product.price}`}
+                      category={product.category}
+                      description={product.description}
                     />
                   ) : (
                     <DesktopCard
@@ -92,6 +94,8 @@ function Items() {
                       productName={product.name}
                       rating={product.rating}
                       price={`${product.price}`}
+                      category={product.category}
+                      description={product.description}
                     />
                   )
                 ))

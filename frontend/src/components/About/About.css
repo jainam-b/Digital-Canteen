@@ -1,0 +1,9 @@
+.content{
+    font-weight: 500;
+    /* font-style: revert; */
+    font-size: 95%;
+    margin-top: -10%;
+    flex-direction: cen;
+    /* align-items: center; */
+    padding: 12%;
+}

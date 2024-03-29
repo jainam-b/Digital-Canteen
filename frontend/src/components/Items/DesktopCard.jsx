@@ -23,6 +23,8 @@ export default function Itemcard({
   rating,
   price,
   productId,
+  category,
+  description
 }) {
   const navigate = useNavigate();
   const { addToCart, updateCartItemQuantity, cartItems } = useCart();
@@ -76,11 +78,14 @@ export default function Itemcard({
       <div  className=" ">
         <div className="">
           <div className="res-img">
-            <img src={  "./sandwich.png"}className="prodimage" alt={productName} style={{borderRadius:"18px"}} />
+            <img src={  image}className="prodimage" alt={productName} style={{borderRadius:"18px"}} />
             <div className="res-name">
               <p className="resName">{productName}</p>
+              <div className="description">{description}</div>
+         
               <span className="ratings green">
-              <i class="fa fa-star" aria-hidden="true"></i> 4.4
+              <i  class="fa fa-star" aria-hidden="true"  >  </i > 
+              {rating}
               </span>
               <div className="res-info">
               <p></p>
