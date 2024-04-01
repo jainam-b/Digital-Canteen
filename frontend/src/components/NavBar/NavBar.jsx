@@ -1,10 +1,5 @@
 import React, { useState, useContext } from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,8 +7,14 @@ import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { useCart } from "../Context/CartContext";
-import { useMediaQuery } from 'react-responsive';
-import MobileNavBar from '../NavBar/MobileNav'; // Import your MobileNavBar component
+import { useMediaQuery } from "react-responsive";
+import MobileNavBar from "../NavBar/MobileNav"; // Import your MobileNavBar component
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/clerk-react";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -46,11 +47,12 @@ const NavBar = () => {
     <>
       {isMobile ? ( // Render MobileNavBar if the screen size is mobile
         <MobileNavBar />
-      ) : ( // Render regular NavBar for desktop view
-        <AppBar 
+      ) : (
+        // Render regular NavBar for desktop view
+        <AppBar
           position="static"
           className="navbar"
-          style={{ borderRadius: "18px", cursor: "pointer"  , marginTop:"-5%"}}
+          style={{ borderRadius: "18px", cursor: "pointer", marginTop: "-5%" }}
           color="inherit"
         >
           <Toolbar
@@ -60,12 +62,12 @@ const NavBar = () => {
             <Typography variant="h6" component="div">
               <img
                 src="finallogo.jpg"
-                alt="Logo" 
+                alt="Logo"
                 onClick={() => {
                   window.location.href = "/";
                 }}
                 className="logo"
-              />  
+              />
             </Typography>
 
             <div className={`menu ${showMenu ? "active" : ""}`}>
@@ -108,7 +110,7 @@ const NavBar = () => {
               </div>
             </div>
 
-            <div className="signup-container">
+            {/* <div className="signup-container">
               <div className="submit" onClick={handlenavigateSignUp}>
                 {isAuthenticated() ? "Logout" : "Signup"}
               </div>
@@ -124,8 +126,13 @@ const NavBar = () => {
               >
                 {showMenu ? <CloseIcon /> : <MenuIcon />}
               </IconButton>
-            </div>
-
+            </div> */}
+             <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton afterSignOutUrl="/" />
+      </SignedIn>
           </Toolbar>
         </AppBar>
       )}

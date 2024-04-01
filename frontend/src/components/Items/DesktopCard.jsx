@@ -83,10 +83,10 @@ export default function Itemcard({
               <p className="resName">{productName}</p>
               <div className="description">{description}</div>
          
-              <span className="ratings green">
+              {/* <span className="ratings green">
               <i  class="fa fa-star" aria-hidden="true"  >  </i > 
               {rating}
-              </span>
+              </span> */}
               <div className="res-info">
               <p></p>
               <p>₹{price}</p>

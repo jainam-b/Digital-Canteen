@@ -80,9 +80,9 @@ export default function Itemcard({
             <img src={image} className="prodimage" alt={productName} style={{borderRadius:"18px "}} />
             <div>
               <p className="prodName">{productName}</p>
-              <span>
+              {/* <span>
                 <StarIcon /> {rating}
-              </span>
+              </span> */}
               <Typography>{price}</Typography>
             </div>
           </div>

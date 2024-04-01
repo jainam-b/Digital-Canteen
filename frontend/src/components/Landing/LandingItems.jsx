@@ -26,18 +26,17 @@ function Items() {
     let path = `/cart`; 
     navigate(path);
   }
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get('http://localhost:3000/order/menus');
-        setProducts(response.data.slice(0, 8)); // Only keep the first 6 items
+        setProducts(response.data.slice(0, 6)); // Only keep the first 6 items
         setLoading(false); 
         setShowAlert(true); 
         setTimeout(() => {
           setShowAlert(false);
-        }, 2000);
-      } catch (error) {
+        }, 2000)
+     } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
